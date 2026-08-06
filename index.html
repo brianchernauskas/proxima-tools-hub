@@ -34,6 +34,8 @@
       --playbook-dim:rgba(34,211,238,.1);
       --deals:       #34D399;
       --deals-dim:   rgba(52,211,153,.1);
+      --baseline:    #a78bfa;
+      --baseline-dim:rgba(167,139,250,.1);
     }
     :root[data-theme="light"] {
       --bg:          #F4F7FB;
@@ -183,7 +185,8 @@
     .tool-card.grid::before   { background: var(--grid); }
     .tool-card.hub::before      { background: var(--hub); }
     .tool-card.playbook::before { background: var(--playbook); }
-    .tool-card.deals::before    { background: var(--deals); }
+    .tool-card.deals::before     { background: var(--deals); }
+    .tool-card.baseline::before  { background: var(--baseline); }
 
     .tool-tag {
       font-family: 'Courier New', monospace;
@@ -201,6 +204,7 @@
     .hub      .tool-tag { color: var(--hub);      background: var(--hub-dim); }
     .playbook .tool-tag { color: var(--playbook); background: var(--playbook-dim); }
     .deals    .tool-tag { color: var(--deals);    background: var(--deals-dim); }
+    .baseline .tool-tag { color: var(--baseline); background: var(--baseline-dim); }
 
     .tool-name {
       font-family: Georgia, 'Times New Roman', serif;
@@ -234,6 +238,7 @@
     .hub      .tool-link { color: var(--hub); }
     .playbook .tool-link { color: var(--playbook); }
     .deals    .tool-link { color: var(--deals); }
+    .baseline .tool-link { color: var(--baseline); }
 
     .tool-link svg {
       transition: transform .15s;
@@ -396,6 +401,13 @@
         <div class="tool-name">Cloud Negotiations Playbook</div>
         <p class="tool-desc">A structured negotiation reference covering AWS, Azure, and GCP deal mechanics — tactics, timing, leverage points, and counter-moves for enterprise cloud contract renewals.</p>
         <span class="tool-link">Open playbook <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="tool-card baseline" href="https://brianchernauskas.github.io/cloud-baseline-planner/" target="_blank">
+        <span class="tool-tag">Multi-Cloud · SKU 1</span>
+        <div class="tool-name">Cloud Baseline Renewal Planner</div>
+        <p class="tool-desc">Sizes a Cloud Baseline Renewal engagement — team composition, delivery timeline, and savings opportunity — based on client spend, provider mix, contract status, and data readiness. Outputs an Optimize phase preview.</p>
+        <span class="tool-link">Open planner <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a class="tool-card deals" href="https://brianchernauskas.github.io/deal-calibration/" target="_blank">
