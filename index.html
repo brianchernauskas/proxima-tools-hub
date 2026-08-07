@@ -2,340 +2,168 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5E1D26WRG"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5E1D26WRG');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5E1D26WRG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5E1D26WRG');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proxima — Intelligence Tools</title>
   <style>
-    /* ── Tokens ── */
     :root {
-      --bg:          #080D16;
-      --surface:     #0F1724;
-      --card:        #131D2E;
-      --border:      #1E2D42;
-      --border-subtle: #162030;
-      --text:        #E8EFF8;
-      --text-2:      #7D8FA3;
-      --text-3:      #4A5A6E;
-      --proxima:     #818CF8;
-      --proxima-dim: rgba(129,140,248,.12);
-
-      --aws:         #F59E0B;
-      --aws-dim:     rgba(245,158,11,.1);
-      --azure:       #3B82F6;
-      --azure-dim:   rgba(59,130,246,.1);
-      --gcp:         #34D399;
-      --gcp-dim:     rgba(52,211,153,.1);
-      --grid:        #FB923C;
-      --grid-dim:    rgba(251,146,60,.1);
-      --hub:         #A78BFA;
-      --hub-dim:     rgba(167,139,250,.1);
-      --playbook:    #22D3EE;
-      --playbook-dim:rgba(34,211,238,.1);
-      --deals:       #34D399;
-      --deals-dim:   rgba(52,211,153,.1);
-      --baseline:    #a78bfa;
-      --baseline-dim:rgba(167,139,250,.1);
+      --bg:           #080D16;
+      --surface:      #0F1724;
+      --card:         #111B2B;
+      --card-hover:   #152235;
+      --border:       #1E2D42;
+      --border-sub:   #162030;
+      --text:         #E8EFF8;
+      --text-2:       #7D8FA3;
+      --text-3:       #3E5068;
+      --proxima:      #818CF8;
+      --proxima-dim:  rgba(129,140,248,.12);
+      --aws:          #F59E0B;
+      --aws-dim:      rgba(245,158,11,.1);
+      --azure:        #3B82F6;
+      --azure-dim:    rgba(59,130,246,.1);
+      --gcp:          #34D399;
+      --gcp-dim:      rgba(52,211,153,.1);
+      --grid:         #FB923C;
+      --grid-dim:     rgba(251,146,60,.1);
+      --playbook:     #22D3EE;
+      --playbook-dim: rgba(34,211,238,.1);
+      --deals:        #A78BFA;
+      --deals-dim:    rgba(167,139,250,.1);
+      --baseline:     #F472B6;
+      --baseline-dim: rgba(244,114,182,.1);
     }
-    :root[data-theme="light"] {
-      --bg:          #F4F7FB;
+    :root[data-theme="light"],
+    @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+      --bg:          #F0F4F9;
       --surface:     #FFFFFF;
       --card:        #FFFFFF;
+      --card-hover:  #F7F9FC;
       --border:      #D1DCE8;
-      --border-subtle: #E8EFF6;
+      --border-sub:  #E4EBF3;
       --text:        #0F1724;
       --text-2:      #4A5A6E;
-      --text-3:      #8FA3B8;
-      --proxima-dim: rgba(99,102,241,.08);
+      --text-3:      #9AABB8;
+    }}
+    :root[data-theme="light"] {
+      --bg:#F0F4F9; --surface:#FFFFFF; --card:#FFFFFF; --card-hover:#F7F9FC;
+      --border:#D1DCE8; --border-sub:#E4EBF3; --text:#0F1724; --text-2:#4A5A6E; --text-3:#9AABB8;
     }
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) {
-        --bg:          #F4F7FB;
-        --surface:     #FFFFFF;
-        --card:        #FFFFFF;
-        --border:      #D1DCE8;
-        --border-subtle: #E8EFF6;
-        --text:        #0F1724;
-        --text-2:      #4A5A6E;
-        --text-3:      #8FA3B8;
-        --proxima-dim: rgba(99,102,241,.08);
-      }
+    :root[data-theme="dark"] {
+      --bg:#080D16; --surface:#0F1724; --card:#111B2B; --card-hover:#152235;
+      --border:#1E2D42; --border-sub:#162030; --text:#E8EFF8; --text-2:#7D8FA3; --text-3:#3E5068;
     }
 
-    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Header ── */
-    .site-header {
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-    .wordmark {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-      color: var(--text);
-    }
-    .wordmark span {
-      color: var(--proxima);
-    }
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-2);
-      cursor: pointer;
-      padding: 5px 10px;
-      font-size: 12px;
-      letter-spacing: .04em;
-      font-family: inherit;
-    }
-    .theme-toggle:hover { border-color: var(--text-2); color: var(--text); }
+    /* AUTH GATE */
+    #auth-gate { position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center; }
+    #auth-gate.hidden { display:none; }
+    .gate-box { width:100%;max-width:340px;padding:40px 32px;background:var(--card);border:1px solid var(--border);border-radius:14px;text-align:center; }
+    .gate-wordmark { font-family:Georgia,serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:6px; }
+    .gate-sub { font-size:.8rem;color:var(--text-3);margin-bottom:28px; }
+    .gate-input { width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;font-family:inherit;text-align:center;letter-spacing:.08em;margin-bottom:12px;outline:none; }
+    .gate-input:focus { border-color:var(--proxima); }
+    .gate-btn { width:100%;padding:10px;background:var(--proxima);color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer; }
+    .gate-btn:hover { opacity:.9; }
+    .gate-error { margin-top:10px;font-size:.8rem;color:#f87171;min-height:18px; }
 
-    /* ── Hero ── */
-    .hero {
-      padding: 64px 40px 48px;
-      max-width: 900px;
-    }
-    .hero-eyebrow {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--proxima);
-      margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      text-wrap: balance;
-      margin-bottom: 16px;
-    }
-    .hero p {
-      font-size: 16px;
-      color: var(--text-2);
-      max-width: 560px;
-      line-height: 1.7;
-    }
+    /* HEADER */
+    .site-header { border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px; }
+    .wordmark { font-family:Georgia,serif;font-size:19px;font-weight:700;letter-spacing:-.4px;color:var(--text); }
+    .wordmark span { color:var(--proxima); }
+    .header-right { display:flex;align-items:center;gap:16px; }
+    .tool-count-pill { font-size:11px;font-weight:600;letter-spacing:.06em;background:var(--proxima-dim);color:var(--proxima);padding:3px 10px;border-radius:20px; }
+    .theme-toggle { background:none;border:1px solid var(--border);color:var(--text-2);cursor:pointer;padding:5px 12px;font-size:11px;letter-spacing:.06em;font-family:inherit;border-radius:4px; }
+    .theme-toggle:hover { border-color:var(--text-2);color:var(--text); }
 
-    /* ── Divider ── */
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 40px 48px;
-    }
+    /* HERO */
+    .hero { padding:48px 40px 36px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;border-bottom:1px solid var(--border); }
+    .hero-left { max-width:520px; }
+    .hero-eyebrow { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--proxima);margin-bottom:14px; }
+    .hero h1 { font-family:Georgia,serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;line-height:1.15;letter-spacing:-.5px;color:var(--text);text-wrap:balance;margin-bottom:12px; }
+    .hero p { font-size:14px;color:var(--text-2);line-height:1.7; }
+    .hero-stats { display:flex;gap:24px;flex-shrink:0; }
+    .hero-stat { text-align:right; }
+    .hero-stat-num { font-family:Georgia,serif;font-size:32px;font-weight:700;line-height:1;color:var(--text); }
+    .hero-stat-label { font-size:11px;color:var(--text-3);letter-spacing:.04em;margin-top:4px; }
+    @media(max-width:640px) { .hero { flex-direction:column;padding:32px 20px 24px; } .hero-stats { display:none; } }
 
-    /* ── Tool Grid ── */
-    .tools-section {
-      padding: 0 40px 80px;
-    }
-    .section-label {
-      font-family: 'Courier New', monospace;
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 20px;
-    }
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1px;
-      background: var(--border-subtle);
-      border: 1px solid var(--border-subtle);
-    }
+    /* TOOL SECTIONS */
+    .tools-section { padding:0 40px 80px; }
+    @media(max-width:640px) { .tools-section { padding:0 20px 60px; } }
+
+    .tool-group { margin-top:40px; }
+    .group-header { display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border-sub); }
+    .group-label { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3); }
+    .group-count { font-size:11px;color:var(--text-3);background:var(--border-sub);padding:2px 8px;border-radius:10px; }
+
+    /* CARD GRID */
+    .tool-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px; }
+
+    /* CARD — use div so nested links are valid */
     .tool-card {
-      background: var(--card);
-      padding: 28px 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-      transition: background .15s;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:22px 22px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+      cursor:pointer;
+      transition:background .15s, border-color .15s, transform .12s;
+      overflow:hidden;
     }
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-    }
-    .tool-card:hover { background: var(--surface); }
+    .tool-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px; }
+    .tool-card:hover { background:var(--card-hover);border-color:var(--border);transform:translateY(-1px); }
 
-    .tool-card.aws::before    { background: var(--aws); }
-    .tool-card.azure::before  { background: var(--azure); }
-    .tool-card.gcp::before    { background: var(--gcp); }
-    .tool-card.grid::before   { background: var(--grid); }
-    .tool-card.hub::before      { background: var(--hub); }
-    .tool-card.playbook::before { background: var(--playbook); }
-    .tool-card.deals::before     { background: var(--deals); }
-    .tool-card.baseline::before  { background: var(--baseline); }
+    .tool-card.aws::before    { background:var(--aws); }
+    .tool-card.azure::before  { background:var(--azure); }
+    .tool-card.gcp::before    { background:var(--gcp); }
+    .tool-card.grid::before   { background:var(--grid); }
+    .tool-card.playbook::before { background:var(--playbook); }
+    .tool-card.deals::before  { background:var(--deals); }
+    .tool-card.baseline::before { background:var(--baseline); }
 
-    .tool-tag {
-      font-family: 'Courier New', monospace;
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 3px 7px;
-      display: inline-block;
-      width: fit-content;
-    }
-    .aws  .tool-tag { color: var(--aws);   background: var(--aws-dim); }
-    .azure .tool-tag { color: var(--azure); background: var(--azure-dim); }
-    .gcp  .tool-tag { color: var(--gcp);   background: var(--gcp-dim); }
-    .grid .tool-tag { color: var(--grid);  background: var(--grid-dim); }
-    .hub      .tool-tag { color: var(--hub);      background: var(--hub-dim); }
-    .playbook .tool-tag { color: var(--playbook); background: var(--playbook-dim); }
-    .deals    .tool-tag { color: var(--deals);    background: var(--deals-dim); }
-    .baseline .tool-tag { color: var(--baseline); background: var(--baseline-dim); }
+    .tool-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;display:inline-block;width:fit-content;border-radius:3px; }
+    .aws .tool-tag      { color:var(--aws);      background:var(--aws-dim); }
+    .azure .tool-tag    { color:var(--azure);    background:var(--azure-dim); }
+    .gcp .tool-tag      { color:var(--gcp);      background:var(--gcp-dim); }
+    .grid .tool-tag     { color:var(--grid);     background:var(--grid-dim); }
+    .playbook .tool-tag { color:var(--playbook); background:var(--playbook-dim); }
+    .deals .tool-tag    { color:var(--deals);    background:var(--deals-dim); }
+    .baseline .tool-tag { color:var(--baseline); background:var(--baseline-dim); }
 
-    .tool-name {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      color: var(--text);
-      line-height: 1.25;
-    }
-    .tool-desc {
-      font-size: 13.5px;
-      color: var(--text-2);
-      line-height: 1.65;
-      flex: 1;
-    }
-    .tool-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .04em;
-      margin-top: 4px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-subtle);
-    }
-    .aws   .tool-link { color: var(--aws); }
-    .azure .tool-link { color: var(--azure); }
-    .gcp   .tool-link { color: var(--gcp); }
-    .grid  .tool-link { color: var(--grid); }
-    .hub      .tool-link { color: var(--hub); }
-    .playbook .tool-link { color: var(--playbook); }
-    .deals    .tool-link { color: var(--deals); }
-    .baseline .tool-link { color: var(--baseline); }
+    .tool-name { font-family:Georgia,serif;font-size:17px;font-weight:700;letter-spacing:-.2px;color:var(--text);line-height:1.25; }
+    .tool-desc { font-size:13px;color:var(--text-2);line-height:1.65;flex:1; }
 
-    .tool-link svg {
-      transition: transform .15s;
-    }
-    .tool-card:hover .tool-link svg {
-      transform: translateX(3px);
-    }
+    .tool-footer { display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border-sub);margin-top:auto; }
+    .tool-link { display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;letter-spacing:.03em; }
+    .tool-link svg { transition:transform .15s; }
+    .tool-card:hover .tool-link svg { transform:translateX(3px); }
 
-    /* ── Footer ── */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .site-footer p {
-      font-size: 12px;
-      color: var(--text-3);
-      font-style: italic;
-    }
-    .footer-wordmark {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-3);
-      letter-spacing: -0.2px;
-    }
+    .aws .tool-link      { color:var(--aws); }
+    .azure .tool-link    { color:var(--azure); }
+    .gcp .tool-link      { color:var(--gcp); }
+    .grid .tool-link     { color:var(--grid); }
+    .playbook .tool-link { color:var(--playbook); }
+    .deals .tool-link    { color:var(--deals); }
+    .baseline .tool-link { color:var(--baseline); }
 
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .site-header, .hero, .tools-section, .section-divider, .site-footer {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      .section-divider { margin-left: 20px; margin-right: 20px; }
-      .hero { padding-top: 40px; }
-      .tool-grid { grid-template-columns: 1fr; }
-    }
-    /* ── Password Gate ── */
-    #auth-gate {
-      position: fixed; inset: 0; z-index: 1000;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-    }
-    #auth-gate.hidden { display: none; }
-    .gate-box {
-      width: 100%; max-width: 360px;
-      padding: 40px 36px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      text-align: center;
-    }
-    .gate-wordmark {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.4rem; font-weight: 700;
-      letter-spacing: -.02em;
-      color: var(--text-1);
-      margin-bottom: 6px;
-    }
-    .gate-sub {
-      font-size: .8rem; color: var(--text-3);
-      margin-bottom: 28px;
-    }
-    .gate-input {
-      width: 100%;
-      padding: 10px 14px;
-      background: var(--bg);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      color: var(--text-1);
-      font-size: .95rem;
-      font-family: inherit;
-      text-align: center;
-      letter-spacing: .08em;
-      margin-bottom: 12px;
-    }
-    .gate-input:focus { outline: none; border-color: var(--accent); }
-    .gate-btn {
-      width: 100%;
-      padding: 10px;
-      background: var(--accent);
-      color: #fff;
-      border: none; border-radius: 8px;
-      font-size: .9rem; font-weight: 600;
-      cursor: pointer;
-    }
-    .gate-btn:hover { opacity: .9; }
-    .gate-error {
-      margin-top: 10px;
-      font-size: .8rem;
-      color: #f87171;
-      min-height: 18px;
-    }
+    .tool-config-link { font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:5px;border:1px solid var(--border-sub); }
+    .tool-config-link:hover { color:var(--text-2);border-color:var(--border); }
+
+    /* FOOTER */
+    .site-footer { border-top:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; }
+    .site-footer p { font-size:12px;color:var(--text-3);font-style:italic; }
+    .footer-wordmark { font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--text-3);letter-spacing:-.2px; }
+
+    @media(max-width:640px) { .site-header { padding:0 20px; } .site-footer { padding:20px; } }
   </style>
 </head>
 <body>
@@ -350,125 +178,168 @@
   </div>
 </div>
 
-  <header class="site-header">
-    <div class="wordmark">Proxima<span>.</span></div>
+<header class="site-header">
+  <div class="wordmark">Proxima<span>.</span></div>
+  <div class="header-right">
+    <div class="tool-count-pill" id="tool-count"></div>
     <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
+<section class="hero">
+  <div class="hero-left">
     <p class="hero-eyebrow">Internal Intelligence Tools</p>
     <h1>Contract leverage,<br>quantified.</h1>
-    <p>Purpose-built tools for Proxima advisors — structured negotiation planners and market intelligence for AWS, Azure, GCP, and energy infrastructure deals.</p>
-  </section>
+    <p>Purpose-built tools for Proxima advisors — negotiation planners, engagement sizing, and market intelligence for cloud and infrastructure deals.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-tools">7</div>
+      <div class="hero-stat-label">Tools live</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">Cloud providers</div>
+    </div>
+  </div>
+</section>
 
-  <hr class="section-divider">
+<section class="tools-section">
 
-  <section class="tools-section">
-    <p class="section-label">Available tools — {{ count }}</p>
-
+  <!-- NEGOTIATION PLANNERS -->
+  <div class="tool-group">
+    <div class="group-header">
+      <span class="group-label">Negotiation Planners</span>
+      <span class="group-count">3</span>
+    </div>
     <div class="tool-grid">
 
-      <a class="tool-card aws" href="https://brianchernauskas.github.io/aws-negotiation-planner/" target="_blank">
+      <div class="tool-card aws" onclick="window.open('https://brianchernauskas.github.io/aws-negotiation-planner/','_blank')">
         <span class="tool-tag">AWS · Cloud</span>
         <div class="tool-name">AWS Negotiation Planner</div>
         <p class="tool-desc">Generates a tailored EDP and discount strategy based on spend profile, Marketplace footprint, and leverage signals. Surfaces negotiation tactics, discount ranges, and commitment structure recommendations.</p>
-        <span class="tool-link">Open tool <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
 
-      <a class="tool-card azure" href="https://brianchernauskas.github.io/azure-negotiation-planner/" target="_blank">
+      <div class="tool-card azure" onclick="window.open('https://brianchernauskas.github.io/azure-negotiation-planner/','_blank')">
         <span class="tool-tag">Azure · Cloud</span>
         <div class="tool-name">Azure Negotiation Planner</div>
         <p class="tool-desc">Guides EA and MCA-E renewal strategy, surfaces EA pricing level risk (Levels B/C/D removed Nov 2025), and scores leverage across vehicle choice, M365 bundling, and Copilot commitments.</p>
-        <span class="tool-link">Open tool <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
 
-      <a class="tool-card gcp" href="https://brianchernauskas.github.io/gcp-negotiation-planner/" target="_blank">
+      <div class="tool-card gcp" onclick="window.open('https://brianchernauskas.github.io/gcp-negotiation-planner/','_blank')">
         <span class="tool-tag">GCP · Cloud</span>
         <div class="tool-name">GCP Negotiation Planner</div>
         <p class="tool-desc">Maps CUD strategy, flags the June 2026 CUD scope change impact on project-level chargebacks, and identifies Google's market-hunger signals to strengthen CASC and PPA negotiations.</p>
-        <span class="tool-link">Open tool <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
 
-      <a class="tool-card grid" href="https://brianchernauskas.github.io/grid-headroom-map/" target="_blank">
-        <span class="tool-tag">Energy · Infrastructure</span>
-        <div class="tool-name">Grid Headroom Map</div>
-        <p class="tool-desc">Scores U.S. power markets by grid constraint to surface sourcing leverage in cloud and data-center infrastructure deals. Identifies markets where capacity pressure creates negotiating advantage.</p>
-        <span class="tool-link">Open tool <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+    </div>
+  </div>
 
-      <a class="tool-card playbook" href="https://brianchernauskas.github.io/cloud-negotiation-playbook/" target="_blank">
-        <span class="tool-tag">Multi-Cloud · Playbook</span>
-        <div class="tool-name">Cloud Negotiations Playbook</div>
-        <p class="tool-desc">A structured negotiation reference covering AWS, Azure, and GCP deal mechanics — tactics, timing, leverage points, and counter-moves for enterprise cloud contract renewals.</p>
-        <span class="tool-link">Open playbook <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+  <!-- ENGAGEMENT SIZING -->
+  <div class="tool-group">
+    <div class="group-header">
+      <span class="group-label">Engagement Sizing</span>
+      <span class="group-count">1</span>
+    </div>
+    <div class="tool-grid">
 
-      <a class="tool-card baseline" href="https://brianchernauskas.github.io/cloud-baseline-planner/" target="_blank">
+      <div class="tool-card baseline" onclick="window.open('https://brianchernauskas.github.io/cloud-baseline-planner/','_blank')">
         <span class="tool-tag">Multi-Cloud · SKU 1</span>
         <div class="tool-name">Cloud Baseline Renewal Planner</div>
-        <p class="tool-desc">Sizes a Cloud Baseline Renewal engagement — team composition, delivery timeline, and savings opportunity — based on client spend, provider mix, contract status, and data readiness. Outputs an Optimize phase preview.</p>
-        <div style="display:flex;gap:16px;align-items:center;margin-top:4px">
-          <span class="tool-link">Open planner <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span style="font-size:12px;opacity:0.6">⚙ <a href="https://brianchernauskas.github.io/cloud-baseline-planner/config.html" target="_blank" style="color:inherit;text-decoration:none">Configure parameters</a></span>
+        <p class="tool-desc">Sizes a Cloud Baseline Renewal engagement — team composition, delivery timeline, and savings opportunity — based on client spend, provider mix, contract status, and data readiness. Includes Optimize phase preview.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open planner <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <a class="tool-config-link" href="https://brianchernauskas.github.io/cloud-baseline-planner/config.html" target="_blank" onclick="event.stopPropagation()">⚙ Configure</a>
         </div>
-      </a>
+      </div>
 
-      <a class="tool-card deals" href="https://brianchernauskas.github.io/deal-calibration/" target="_blank">
+    </div>
+  </div>
+
+  <!-- INTELLIGENCE & REFERENCE -->
+  <div class="tool-group">
+    <div class="group-header">
+      <span class="group-label">Intelligence & Reference</span>
+      <span class="group-count">3</span>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card deals" onclick="window.open('https://brianchernauskas.github.io/deal-calibration/','_blank')">
         <span class="tool-tag">Multi-Cloud · Intelligence</span>
         <div class="tool-name">Deal Calibration</div>
         <p class="tool-desc">Log closed Proxima deals by provider, spend tier, and contract type to build an observed discount database. Ranges surface automatically inside the negotiation planners to calibrate recommendations against real outcomes.</p>
-        <span class="tool-link">Open tool <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card grid" onclick="window.open('https://brianchernauskas.github.io/grid-headroom-map/','_blank')">
+        <span class="tool-tag">Energy · Infrastructure</span>
+        <div class="tool-name">Grid Headroom Map</div>
+        <p class="tool-desc">Scores U.S. power markets by grid constraint to surface sourcing leverage in cloud and data-center infrastructure deals. Identifies markets where capacity pressure creates negotiating advantage.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card playbook" onclick="window.open('https://brianchernauskas.github.io/cloud-negotiation-playbook/','_blank')">
+        <span class="tool-tag">Multi-Cloud · Playbook</span>
+        <div class="tool-name">Cloud Negotiations Playbook</div>
+        <p class="tool-desc">A structured negotiation reference covering AWS, Azure, and GCP deal mechanics — tactics, timing, leverage points, and counter-moves for enterprise cloud contract renewals.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open playbook <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
 
     </div>
-  </section>
+  </div>
 
-  <footer class="site-footer">
-    <p>Intended for Proxima use only — contact Brian Chernauskas with questions</p>
-    <div class="footer-wordmark">Proxima</div>
-  </footer>
+</section>
 
-  <script>
-    const HASH = 'e1af9770edb5a9358db28d25520d54b0e5aeb7bdaa6fed238cebea143d1560bb';
+<footer class="site-footer">
+  <p>Intended for Proxima use only — contact Brian Chernauskas with questions</p>
+  <div class="footer-wordmark">Proxima.</div>
+</footer>
 
-    async function sha256(str) {
-      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
+<script>
+  const HASH = 'e1af9770edb5a9358db28d25520d54b0e5aeb7bdaa6fed238cebea143d1560bb';
 
-    async function checkPassword() {
-      const val = document.getElementById('gate-input').value;
-      const hash = await sha256(val);
-      if (hash === HASH) {
-        localStorage.setItem('proxima-auth', HASH);
-        document.getElementById('auth-gate').classList.add('hidden');
-      } else {
-        document.getElementById('gate-error').textContent = 'Incorrect password.';
-        document.getElementById('gate-input').value = '';
-        document.getElementById('gate-input').focus();
-      }
-    }
-
-    // Allow Enter key to submit
-    document.getElementById('gate-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') checkPassword();
-    });
-
-    // Check if already authenticated
-    if (localStorage.getItem('proxima-auth') === HASH) {
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  async function checkPassword() {
+    const val = document.getElementById('gate-input').value;
+    const hash = await sha256(val);
+    if (hash === HASH) {
+      localStorage.setItem('proxima-auth', HASH);
       document.getElementById('auth-gate').classList.add('hidden');
+    } else {
+      document.getElementById('gate-error').textContent = 'Incorrect password.';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
     }
+  }
+  document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key==='Enter') checkPassword(); });
+  if (localStorage.getItem('proxima-auth') === HASH) document.getElementById('auth-gate').classList.add('hidden');
 
-    // Tool count + theme toggle
-    document.querySelector('.section-label').textContent =
-      'Available tools — ' + document.querySelectorAll('.tool-card').length;
+  const count = document.querySelectorAll('.tool-card').length;
+  document.getElementById('tool-count').textContent = count + ' tools';
+  document.getElementById('stat-tools').textContent = count;
 
-    function toggleTheme() {
-      const root = document.documentElement;
-      const current = root.getAttribute('data-theme');
-      root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
-  </script>
-
+  function toggleTheme() {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+</script>
 </body>
 </html>
