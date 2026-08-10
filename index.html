@@ -158,6 +158,18 @@
     .tool-config-link { font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:5px;border:1px solid var(--border-sub); }
     .tool-config-link:hover { color:var(--text-2);border-color:var(--border); }
 
+    /* COMING SOON CARDS */
+    .tool-card.soon { opacity:.55;cursor:default;pointer-events:none; }
+    .soon-badge { font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:var(--border);color:var(--text-3);margin-left:auto; }
+
+    /* PHASE SUB-HEADERS */
+    .phase-header { display:flex;align-items:center;gap:10px;margin:20px 0 10px;font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase; }
+    .phase-pill { padding:3px 10px;border-radius:4px;font-weight:700; }
+    .phase-control   { color:#34d399;background:rgba(52,211,153,.1); }
+    .phase-optimize  { color:#22d3ee;background:rgba(34,211,238,.1); }
+    .phase-transform { color:#a78bfa;background:rgba(167,139,250,.1); }
+    .phase-line { flex:1;height:1px;background:var(--border-sub); }
+
     /* FOOTER */
     .site-footer { border-top:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; }
     .site-footer p { font-size:12px;color:var(--text-3);font-style:italic; }
@@ -248,21 +260,129 @@
   <div class="tool-group">
     <div class="group-header">
       <span class="group-label">Engagement Sizing</span>
-      <span class="group-count">1</span>
+      <span class="group-count">8</span>
+    </div>
+
+    <!-- CONTROL -->
+    <div class="phase-header">
+      <span class="phase-pill phase-control">Control — Diagnostic</span>
+      <div class="phase-line"></div>
+      <span style="font-size:10px;color:var(--text-3)">SKUs 1–4</span>
     </div>
     <div class="tool-grid">
 
       <div class="tool-card baseline" onclick="window.open('https://brianchernauskas.github.io/cloud-baseline-planner/','_blank')">
-        <span class="tool-tag">Multi-Cloud · SKU 1</span>
-        <div class="tool-name">Cloud Baseline Renewal Planner</div>
-        <p class="tool-desc"><strong style="color:var(--baseline);font-size:11px;letter-spacing:.06em;text-transform:uppercase;">Diagnostic</strong> &nbsp;Sizes the Control phase of a Cloud Baseline Renewal — team composition, delivery timeline, and savings opportunity — based on client spend, provider mix, data readiness, and contract status. Outputs an Optimize phase preview.</p>
+        <span class="tool-tag">SKU 1 · 4–6 wks</span>
+        <div class="tool-name">Cloud Baseline Renewal Roadmap</div>
+        <p class="tool-desc">Establishes a spend baseline across the infrastructure landscape. Outputs a cleansed spend cube, top supplier deep dive, savings opportunity (A1), and supplier prioritization matrix.</p>
         <div class="tool-footer">
           <span class="tool-link">Open planner <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <a class="tool-config-link" href="https://brianchernauskas.github.io/cloud-baseline-planner/config.html" target="_blank" onclick="event.stopPropagation()">⚙ Configure</a>
         </div>
       </div>
 
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 2 · 4–8 wks</span>
+        <div class="tool-name">Commercial Risk & Benchmark Assessment</div>
+        <p class="tool-desc">Tier 1 contract assessments and market benchmarking. Outputs a contract clause heatmap, commercial risk log, key negotiation levers, and benchmarking report across top 10 vendors.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 3 · 6–12 wks</span>
+        <div class="tool-name">Cloud Spend & Consumption</div>
+        <p class="tool-desc">Assessment of CSP estate, consumption patterns, and commercial structures across Tier 1 vendors. Outputs an optimization report with right-sizing opportunities, pricing insights, and SKUs in use.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 4 · 6–12 wks</span>
+        <div class="tool-name">Usage Optimization & Utilization</div>
+        <p class="tool-desc">CSP utilization assessment covering under/over-utilized instances and consumption. FinOps programme focused on run, migrate, retire, and replace recommendations with quick-win optimization opportunities.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
     </div>
+
+    <!-- OPTIMIZE -->
+    <div class="phase-header" style="margin-top:28px">
+      <span class="phase-pill phase-optimize">Optimize — Delivery / Execution</span>
+      <div class="phase-line"></div>
+      <span style="font-size:10px;color:var(--text-3)">SKUs 5–7</span>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 5 · 10–18 wks</span>
+        <div class="tool-name">Strategic CSP Negotiations</div>
+        <p class="tool-desc">Executes strategic review and commercial negotiations for strategic CSP suppliers. Outputs supplier profile report, negotiation strategy & playbooks, key asks, levers, and BATNA scenarios.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 6 · 12–20 wks</span>
+        <div class="tool-name">CSP Rationalization & Restructuring</div>
+        <p class="tool-desc">Redesigns and optimizes CSP construct and commercial models for select strategic CSP solutions. Outputs alternative scenarios, capability and feasibility modelling, future-state commercial model, and term sheet.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 7 · 8–12 wks</span>
+        <div class="tool-name">CSP Alternative Sourcing Strategy</div>
+        <p class="tool-desc">Assesses and evaluates the CSP sourcing route ecosystem (rather than going direct) to improve commercial position. Outputs preferred partner strategy and negotiated framework agreements.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TRANSFORM -->
+    <div class="phase-header" style="margin-top:28px">
+      <span class="phase-pill phase-transform">Transform — Delivery / Governance</span>
+      <div class="phase-line"></div>
+      <span style="font-size:10px;color:var(--text-3)">SKUs 9–10</span>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 9 · 12–24 wks</span>
+        <div class="tool-name">Hybrid Cloud / Cloud First Strategy</div>
+        <p class="tool-desc">Conducts market assessment, requirements gathering, RFP/RFQ execution, commercial evaluation, and vendor selection for CSP solution aligned to Cloud / Hybrid strategy. Consolidates to primary and secondary provider.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <span class="tool-tag">SKU 10 · 12–24 wks</span>
+        <div class="tool-name">Application Rationalization & Exit Planning</div>
+        <p class="tool-desc">Builds a commercial rationalization report for targeted applications and suppliers with a defined transition roadmap and exit strategy. Outputs commercial impact report and dependency plan for apps slated for decommission.</p>
+        <div class="tool-footer">
+          <span style="font-size:11px;color:var(--text-3)">Planner coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
   <!-- INTELLIGENCE & REFERENCE -->
