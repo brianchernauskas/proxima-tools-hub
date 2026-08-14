@@ -159,7 +159,8 @@
     .deals .tool-link    { color:var(--deals); }
     .baseline .tool-link { color:var(--baseline); }
     .news .tool-link     { color:var(--news); }
-    .news-stamp { font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums; }
+    .news-stamp { font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums;letter-spacing:.02em; }
+    .news-stamp strong { color:var(--news);font-weight:600; }
 
     .tool-config-link { font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:5px;border:1px solid var(--border-sub); }
     .tool-config-link:hover { color:var(--text-2);border-color:var(--border); }
@@ -263,9 +264,10 @@
         <span class="tool-tag">Multi-Cloud · Running Log</span>
         <div class="tool-name">Hyperscaler News &amp; Planner Updates</div>
         <p class="tool-desc">Tracks AWS, Azure, and GCP program changes that shift negotiating position — pricing model changes, new discount vehicles, contract term shifts — alongside a record of what changed inside each planner and why.</p>
+        <div class="news-stamp">Last updated <strong id="news-last-updated">—</strong></div>
         <div class="tool-footer">
           <span class="tool-link">Open log <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="news-stamp">Updated <span id="news-last-updated">—</span></span>
+          <a class="tool-config-link" href="https://brianchernauskas.github.io/proxima-tools-hub/digest/" target="_blank" onclick="event.stopPropagation()">📰 Digest</a>
         </div>
       </div>
 
