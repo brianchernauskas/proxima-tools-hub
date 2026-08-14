@@ -205,6 +205,43 @@ const ENTRIES = [
   {
     date: '2026-08-14',
     kind: 'update',
+    cloud: 'gcp',
+    title: 'GCP Planner — fixed error that blocked strategy generation entirely',
+    body: 'The GCP planner\'s discount stack section referenced a variable scoped to a different function, throwing a ReferenceError every time "Generate My Strategy" was clicked. No output was produced for any user. The value is now passed in as a parameter. The AWS and Azure planners used the same value inline within a single function and were never affected.',
+    impact: 'If anyone reported the GCP tool appearing to do nothing when they submitted their inputs, this was the cause. Verified fixed against the live site — strategy generation now returns the full report. Worth re-running any GCP scenario that was attempted and abandoned.',
+    link: { label: 'Open GCP Planner', url: 'https://brianchernauskas.github.io/gcp-negotiation-planner/' }
+  },
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
+    cloud: 'multi',
+    title: 'Input audit across all four planners — 28 dead fields removed or wired',
+    body: 'Audited every collected input against whether the strategy engine actually reads it. Across AWS, Azure, GCP, and Salesforce, 28 fields were being collected and never used — including "primary negotiation goal" and "number of regions", which were required fields in every planner and changed nothing. Fields that were genuinely irrelevant were removed; fields that mattered but had never been connected were wired into the logic.',
+    impact: 'Salesforce dropped from 4 steps and roughly 29 inputs to 3 steps and 18. The cloud planners each shed 4 inputs. Newly wired: AWS MAP participation, current discount posture, spend concentration and workload profile; Azure and GCP tenure and consumption trajectory; GCP Spot VM usage and public-sector compliance. Every remaining input now moves a number in the output.'
+  },
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
+    cloud: 'multi',
+    title: 'Fixed tactic list silently truncating recommendations',
+    body: 'All three cloud planners capped the tactics list at ten entries by slicing it in authoring order. Any tactic added to the end of the function over time was discarded before display, regardless of how important it was, while lower-value tactics defined earlier survived. The list now sorts by impact before capping, and the cap was raised to twelve.',
+    impact: 'In a busy scenario the planners were generating fifteen or more applicable tactics and showing whichever ten happened to be defined first. High-impact recommendations were being dropped in exactly the situations where the most was at stake.'
+  },
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'Fixed Export Strategy producing a blank page on the Salesforce planner',
+    body: 'The print stylesheet hid step panels by hard-coded id, a list inherited from the AWS planner where the strategy sits on step five. When the Salesforce planner was simplified to three input steps, its output moved to step four — which the stylesheet was still hiding, so Export Strategy printed an empty page. Print rules now target the active panel rather than specific ids.',
+    impact: 'Applied the same change to all four planners so renumbering steps can no longer break export. Also corrected the Salesforce print letterhead, which still carried the AWS navy it was copied from.'
+  },
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
     cloud: 'tool',
     title: 'Salesforce Negotiation Planner launched',
     body: 'First non-cloud negotiation planner is live. Salesforce renewals move through uplift rather than consumption discounts, so the tool models three outputs instead of one: a target cap on renewal uplift, a dollar estimate of shelfware recoverable in the true-down window, and a discount-off-list band scaled by ACV. Leverage is scored against Salesforce\'s fiscal calendar, which ends January 31.',
