@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5E1D26WRG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5E1D26WRG');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxima — Hyperscaler News & Planner Updates</title>
+  <style>
+    :root {
+      --bg:#F0F4F9; --surface:#FFFFFF; --card:#FFFFFF; --card-hover:#F7F9FC;
+      --border:#D1DCE8; --border-sub:#E4EBF3; --text:#0F1724; --text-2:#4A5A6E; --text-3:#9AABB8;
+      --proxima:#818CF8; --proxima-dim:rgba(129,140,248,.12);
+      --aws:#F59E0B;   --aws-dim:rgba(245,158,11,.1);
+      --azure:#3B82F6; --azure-dim:rgba(59,130,246,.1);
+      --gcp:#34D399;   --gcp-dim:rgba(52,211,153,.1);
+      --multi:#A78BFA; --multi-dim:rgba(167,139,250,.1);
+      --tool:#22D3EE;  --tool-dim:rgba(34,211,238,.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:#080D16; --surface:#0F1724; --card:#111B2B; --card-hover:#152235;
+        --border:#1E2D42; --border-sub:#162030; --text:#E8EFF8; --text-2:#7D8FA3; --text-3:#3E5068;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg:#080D16; --surface:#0F1724; --card:#111B2B; --card-hover:#152235;
+      --border:#1E2D42; --border-sub:#162030; --text:#E8EFF8; --text-2:#7D8FA3; --text-3:#3E5068;
+    }
+    :root[data-theme="light"] {
+      --bg:#F0F4F9; --surface:#FFFFFF; --card:#FFFFFF; --card-hover:#F7F9FC;
+      --border:#D1DCE8; --border-sub:#E4EBF3; --text:#0F1724; --text-2:#4A5A6E; --text-3:#9AABB8;
+    }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.6; min-height:100vh; }
+    a { color:inherit; text-decoration:none; }
+
+    /* AUTH GATE */
+    #auth-gate { position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center; }
+    #auth-gate.hidden { display:none; }
+    .gate-box { width:100%;max-width:340px;padding:40px 32px;background:var(--card);border:1px solid var(--border);border-radius:14px;text-align:center; }
+    .gate-wordmark { font-family:Georgia,serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:6px; }
+    .gate-sub { font-size:.8rem;color:var(--text-3);margin-bottom:28px; }
+    .gate-input { width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;font-family:inherit;text-align:center;letter-spacing:.08em;margin-bottom:12px;outline:none; }
+    .gate-input:focus { border-color:var(--proxima); }
+    .gate-btn { width:100%;padding:10px;background:var(--proxima);color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer; }
+    .gate-error { margin-top:10px;font-size:.8rem;color:#f87171;min-height:18px; }
+
+    /* HEADER */
+    .site-header { border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px; }
+    .wordmark { font-family:Georgia,serif;font-size:19px;font-weight:700;letter-spacing:-.4px; }
+    .wordmark span { color:var(--proxima); }
+    .header-right { display:flex;align-items:center;gap:14px; }
+    .back-link { font-size:12px;color:var(--text-2);display:inline-flex;align-items:center;gap:5px; }
+    .back-link:hover { color:var(--text); }
+    .theme-toggle { background:none;border:1px solid var(--border);color:var(--text-2);cursor:pointer;padding:5px 12px;font-size:11px;letter-spacing:.06em;font-family:inherit;border-radius:4px; }
+    .theme-toggle:hover { border-color:var(--text-2);color:var(--text); }
+
+    /* HERO */
+    .hero { padding:44px 40px 30px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap; }
+    .hero-eyebrow { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--proxima);margin-bottom:12px; }
+    .hero h1 { font-family:Georgia,serif;font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.15;letter-spacing:-.5px;margin-bottom:10px;text-wrap:balance; }
+    .hero p { font-size:14px;color:var(--text-2);max-width:560px; }
+    .last-updated { text-align:right;flex-shrink:0; }
+    .last-updated-label { font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);font-family:'Courier New',monospace; }
+    .last-updated-date { font-family:Georgia,serif;font-size:22px;font-weight:700;margin-top:4px; }
+    @media(max-width:640px) { .hero { padding:30px 20px 22px; } .last-updated { text-align:left; } }
+
+    /* FILTERS */
+    .filter-bar { padding:20px 40px 0;display:flex;gap:8px;flex-wrap:wrap; }
+    .filter-btn { background:var(--card);border:1px solid var(--border);color:var(--text-2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:.02em; }
+    .filter-btn:hover { color:var(--text);border-color:var(--text-3); }
+    .filter-btn.active { background:var(--proxima);border-color:var(--proxima);color:#fff; }
+    @media(max-width:640px) { .filter-bar { padding:16px 20px 0; } }
+
+    /* TIMELINE */
+    .feed { padding:26px 40px 80px;max-width:940px; }
+    @media(max-width:640px) { .feed { padding:20px 20px 60px; } }
+
+    .month-label { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border-sub); }
+    .month-label:first-child { margin-top:0; }
+
+    .entry { background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:10px;position:relative;overflow:hidden; }
+    .entry::before { content:'';position:absolute;top:0;left:0;bottom:0;width:3px; }
+    .entry.aws::before   { background:var(--aws); }
+    .entry.azure::before { background:var(--azure); }
+    .entry.gcp::before   { background:var(--gcp); }
+    .entry.multi::before { background:var(--multi); }
+    .entry.tool::before  { background:var(--tool); }
+
+    .entry-top { display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px; }
+    .entry-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px; }
+    .aws .entry-tag   { color:var(--aws);background:var(--aws-dim); }
+    .azure .entry-tag { color:var(--azure);background:var(--azure-dim); }
+    .gcp .entry-tag   { color:var(--gcp);background:var(--gcp-dim); }
+    .multi .entry-tag { color:var(--multi);background:var(--multi-dim); }
+    .tool .entry-tag  { color:var(--tool);background:var(--tool-dim); }
+    .entry-kind { font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border-sub);padding:2px 7px;border-radius:3px; }
+    .entry-date { font-size:11px;color:var(--text-3);margin-left:auto;font-variant-numeric:tabular-nums; }
+
+    .entry-title { font-family:Georgia,serif;font-size:16px;font-weight:700;letter-spacing:-.2px;line-height:1.3;margin-bottom:6px; }
+    .entry-body { font-size:13.5px;color:var(--text-2);line-height:1.7; }
+    .entry-impact { margin-top:10px;padding-top:10px;border-top:1px solid var(--border-sub);font-size:12.5px;color:var(--text-2); }
+    .entry-impact strong { color:var(--text); }
+    .entry-link { display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:var(--proxima); }
+    .entry-link:hover { text-decoration:underline; }
+
+    .empty { color:var(--text-3);font-size:13px;font-style:italic;padding:30px 0; }
+
+    /* FOOTER */
+    .site-footer { border-top:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; }
+    .site-footer p { font-size:12px;color:var(--text-3);font-style:italic; }
+    .footer-wordmark { font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--text-3); }
+    @media(max-width:640px) { .site-header { padding:0 20px; } .site-footer { padding:20px; } }
+  </style>
+</head>
+<body>
+
+<div id="auth-gate">
+  <div class="gate-box">
+    <div class="gate-wordmark">Proxima</div>
+    <div class="gate-sub">Internal tools — authorized access only</div>
+    <input id="gate-input" class="gate-input" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="gate-btn" onclick="checkPassword()">Enter</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wordmark">Proxima<span>.</span></div>
+  <div class="header-right">
+    <a class="back-link" href="https://brianchernauskas.github.io/proxima-tools-hub/">← All tools</a>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="hero-eyebrow">Running Log</p>
+    <h1>Hyperscaler news &amp;<br>planner updates.</h1>
+    <p>Program changes across AWS, Azure, and GCP that affect negotiating position — paired with a record of what changed inside the Proxima planners and why.</p>
+  </div>
+  <div class="last-updated">
+    <div class="last-updated-label">Last updated</div>
+    <div class="last-updated-date" id="last-updated-date">—</div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all"      onclick="setFilter(this)">All</button>
+  <button class="filter-btn"        data-filter="industry" onclick="setFilter(this)">Industry news</button>
+  <button class="filter-btn"        data-filter="update"   onclick="setFilter(this)">Planner updates</button>
+  <button class="filter-btn"        data-filter="aws"      onclick="setFilter(this)">AWS</button>
+  <button class="filter-btn"        data-filter="azure"    onclick="setFilter(this)">Azure</button>
+  <button class="filter-btn"        data-filter="gcp"      onclick="setFilter(this)">GCP</button>
+</div>
+
+<section class="feed" id="feed"></section>
+
+<footer class="site-footer">
+  <p>Intended for Proxima use only — contact Brian Chernauskas with questions</p>
+  <div class="footer-wordmark">Proxima.</div>
+</footer>
+
+<script>
+/* ============================================================
+   UPDATE LOG
+   Newest entry first. To add an entry, copy the block below.
+
+   date    : 'YYYY-MM-DD'
+   kind    : 'industry'  (hyperscaler / market change)
+           | 'update'    (change made to a Proxima tool)
+   cloud   : 'aws' | 'azure' | 'gcp' | 'multi' | 'tool'
+   title   : short headline
+   body    : what happened
+   impact  : (optional) what it means for negotiations
+   link    : (optional) { label, url }
+   ============================================================ */
+const ENTRIES = [
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
+    cloud: 'aws',
+    title: 'AWS Planner — reseller channel discounts added for sub-$5M spend',
+    body: 'The AWS Negotiation Planner now surfaces the reseller channel as a distinct discount layer for clients spending under $5M annually. APN channel partners hold their own volume agreements with AWS and can pass through margin as an incremental 5–15% discount that AWS will not offer on a direct deal of that size.',
+    impact: 'Appears in three places: a ranked tactic, a green opportunity alert, and a line in the discount factors table. Above $5M the entry suppresses itself, since direct EDP terms generally outpace channel pricing at that level.',
+    link: { label: 'Open AWS Planner', url: 'https://brianchernauskas.github.io/aws-negotiation-planner/' }
+  },
+
+  {
+    date: '2026-08-12',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'Cloud Baseline Renewal Roadmap (SKU 1) launched',
+    body: 'First engagement sizing planner is live. Takes client profile, contract status, and data readiness as inputs, then returns a recommended team composition by role (VP through Associate Consultant), an engagement duration range, and a projected savings range that shifts by provider.',
+    impact: 'All sizing assumptions are editable on the companion Configure page and persist locally, so you can rerun a scenario against your own resourcing model rather than the defaults.',
+    link: { label: 'Open Baseline Planner', url: 'https://brianchernauskas.github.io/cloud-baseline-planner/' }
+  },
+
+  {
+    date: '2026-08-12',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'Tools hub reorganized around the SKU model',
+    body: 'The hub now groups tools into Negotiation Planners, Engagement Sizing, and Intelligence &amp; Reference. Engagement Sizing is further split by delivery phase — Control, Optimize, and Transform — with all SKUs visible, live or otherwise, so the full offering shape is legible at a glance.',
+    impact: 'SKUs without a planner yet appear dimmed rather than hidden, which keeps the roadmap visible when walking a client or an internal team through the catalog.'
+  },
+
+  {
+    date: '2025-12-01',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'AWS launches Database Savings Plans',
+    body: 'AWS introduced Database Savings Plans covering Aurora Serverless, DocumentDB, Neptune, Keyspaces, and Timestream, offering 12–35% discounts on 1-year no-upfront terms.',
+    impact: 'These are almost never included in an initial EDP proposal. Raise them proactively as a separate workstream and push to have them bundled into the EDP credit package — it adds material value at no additional commitment.'
+  },
+
+  {
+    date: '2025-11-01',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Microsoft removes EA pricing Levels B, C, and D',
+    body: 'Microsoft collapsed the Enterprise Agreement pricing level structure, eliminating Levels B, C, and D. Customers who had earned their way into a higher level through volume no longer hold that structural advantage.',
+    impact: 'Clients renewing an EA should model the pricing impact before entering discussions — the loss of level-based pricing can quietly erode an otherwise flat renewal. It also strengthens the case for evaluating MCA-E as the go-forward vehicle.'
+  },
+
+  {
+    date: '2025-06-01',
+    kind: 'industry',
+    cloud: 'gcp',
+    title: 'Google announces CUD scope change effective June 2026',
+    body: 'Google is changing how Committed Use Discounts apply across projects, altering the way CUD benefit flows to project-level cost attribution.',
+    impact: 'Clients running chargeback or showback models off project-level GCP costs will see their internal allocation shift even if total spend is unchanged. Flag this during CASC and PPA discussions so the finance impact is not discovered post-signature.'
+  }
+
+];
+/* ============================================================ */
+
+const KIND_LABEL  = { industry:'Industry', update:'Planner update' };
+const CLOUD_LABEL = { aws:'AWS', azure:'Azure', gcp:'GCP', multi:'Multi-Cloud', tool:'Proxima Tools' };
+
+function fmtDate(iso) {
+  const [y,m,d] = iso.split('-').map(Number);
+  return new Date(y, m-1, d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+}
+function fmtMonth(iso) {
+  const [y,m] = iso.split('-').map(Number);
+  return new Date(y, m-1, 1).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+}
+
+let activeFilter = 'all';
+
+function matches(e) {
+  if (activeFilter === 'all') return true;
+  if (activeFilter === 'industry' || activeFilter === 'update') return e.kind === activeFilter;
+  return e.cloud === activeFilter;
+}
+
+function render() {
+  const sorted = [...ENTRIES].sort((a,b) => b.date.localeCompare(a.date));
+  const shown  = sorted.filter(matches);
+  const feed   = document.getElementById('feed');
+
+  if (!shown.length) {
+    feed.innerHTML = '<p class="empty">No entries match this filter yet.</p>';
+    return;
+  }
+
+  let html = '', lastMonth = '';
+  for (const e of shown) {
+    const month = fmtMonth(e.date);
+    if (month !== lastMonth) { html += `<div class="month-label">${month}</div>`; lastMonth = month; }
+    html += `<article class="entry ${e.cloud}">
+      <div class="entry-top">
+        <span class="entry-tag">${CLOUD_LABEL[e.cloud] || e.cloud}</span>
+        <span class="entry-kind">${KIND_LABEL[e.kind] || e.kind}</span>
+        <span class="entry-date">${fmtDate(e.date)}</span>
+      </div>
+      <h2 class="entry-title">${e.title}</h2>
+      <p class="entry-body">${e.body}</p>
+      ${e.impact ? `<div class="entry-impact"><strong>Why it matters:</strong> ${e.impact}</div>` : ''}
+      ${e.link ? `<a class="entry-link" href="${e.link.url}" target="_blank">${e.link.label} →</a>` : ''}
+    </article>`;
+  }
+  feed.innerHTML = html;
+}
+
+function setFilter(btn) {
+  activeFilter = btn.dataset.filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+  render();
+}
+
+// Latest date drives the "last updated" stamp
+const latest = [...ENTRIES].sort((a,b) => b.date.localeCompare(a.date))[0];
+document.getElementById('last-updated-date').textContent = latest ? fmtDate(latest.date) : '—';
+
+render();
+
+/* AUTH */
+const HASH = 'e1af9770edb5a9358db28d25520d54b0e5aeb7bdaa6fed238cebea143d1560bb';
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+async function checkPassword() {
+  const hash = await sha256(document.getElementById('gate-input').value);
+  if (hash === HASH) {
+    localStorage.setItem('proxima-auth', HASH);
+    document.getElementById('auth-gate').classList.add('hidden');
+  } else {
+    document.getElementById('gate-error').textContent = 'Incorrect password.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+if (localStorage.getItem('proxima-auth') === HASH) document.getElementById('auth-gate').classList.add('hidden');
+
+function toggleTheme() {
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+</script>
+</body>
+</html>
