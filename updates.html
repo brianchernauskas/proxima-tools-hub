@@ -205,6 +205,16 @@ const ENTRIES = [
   {
     date: '2026-08-14',
     kind: 'update',
+    cloud: 'tool',
+    title: 'Salesforce Negotiation Planner launched',
+    body: 'First non-cloud negotiation planner is live. Salesforce renewals move through uplift rather than consumption discounts, so the tool models three outputs instead of one: a target cap on renewal uplift, a dollar estimate of shelfware recoverable in the true-down window, and a discount-off-list band scaled by ACV. Leverage is scored against Salesforce\'s fiscal calendar, which ends January 31.',
+    impact: 'Two mechanics drive most of the value. Renewal is typically the only moment a Salesforce agreement permits reducing seat counts, so unused licenses carried through it are carried for the full next term. And an uncapped uplift compounds across every year and every subsequent renewal, which makes the cap worth more than an equivalent one-time discount. The planner flags notice-window exposure as a hard alert, since a missed date converts a negotiation into an automatic renewal at Salesforce\'s number.',
+    link: { label: 'Open Salesforce Planner', url: 'https://brianchernauskas.github.io/salesforce-negotiation-planner/' }
+  },
+
+  {
+    date: '2026-08-14',
+    kind: 'update',
     cloud: 'aws',
     title: 'AWS Planner — reseller channel discounts added for sub-$5M spend',
     body: 'The AWS Negotiation Planner now surfaces the reseller channel as a distinct discount layer for clients spending under $5M annually. APN channel partners hold their own volume agreements with AWS and can pass through margin as an incremental 5–15% discount that AWS will not offer on a direct deal of that size.',

@@ -35,6 +35,8 @@
       --baseline-dim: rgba(244,114,182,.1);
       --news:         #818CF8;
       --news-dim:     rgba(129,140,248,.12);
+      --saas:         #00A1E0;
+      --saas-dim:     rgba(0,161,224,.1);
     }
     :root[data-theme="light"],
     @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
@@ -132,6 +134,7 @@
     .tool-card.deals::before  { background:var(--deals); }
     .tool-card.baseline::before { background:var(--baseline); }
     .tool-card.news::before { background:var(--news); }
+    .tool-card.saas::before { background:var(--saas); }
 
     .tool-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;display:inline-block;width:fit-content;border-radius:3px; }
     .aws .tool-tag      { color:var(--aws);      background:var(--aws-dim); }
@@ -142,6 +145,7 @@
     .deals .tool-tag    { color:var(--deals);    background:var(--deals-dim); }
     .baseline .tool-tag { color:var(--baseline); background:var(--baseline-dim); }
     .news .tool-tag     { color:var(--news);     background:var(--news-dim); }
+    .saas .tool-tag     { color:var(--saas);     background:var(--saas-dim); }
 
     .tool-name { font-family:Georgia,serif;font-size:17px;font-weight:700;letter-spacing:-.2px;color:var(--text);line-height:1.25; }
     .tool-desc { font-size:13px;color:var(--text-2);line-height:1.65;flex:1; }
@@ -159,6 +163,7 @@
     .deals .tool-link    { color:var(--deals); }
     .baseline .tool-link { color:var(--baseline); }
     .news .tool-link     { color:var(--news); }
+    .saas .tool-link     { color:var(--saas); }
     .news-stamp { font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums;letter-spacing:.02em; }
     .news-stamp strong { color:var(--news);font-weight:600; }
 
@@ -441,6 +446,26 @@
     </div>
   </div>
 
+  <!-- SAAS & APPLICATION PLANNERS -->
+  <div class="tool-group">
+    <div class="group-header">
+      <span class="group-label">SaaS &amp; Application Negotiation</span>
+      <span class="group-count">1</span>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card saas" onclick="window.open('https://brianchernauskas.github.io/salesforce-negotiation-planner/','_blank')">
+        <span class="tool-tag">Salesforce · SaaS</span>
+        <div class="tool-name">Salesforce Negotiation Planner</div>
+        <p class="tool-desc">Models renewal uplift caps, quantifies shelfware recoverable in the true-down window, and scores leverage against Salesforce's fiscal calendar. Surfaces notice-period exposure and contract terms to secure beyond price.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <footer class="site-footer">
@@ -481,6 +506,12 @@
   const count = document.querySelectorAll('.tool-card').length;
   document.getElementById('tool-count').textContent = count + ' tools';
   document.getElementById('stat-tools').textContent = count;
+
+  // Group counts are derived, not hand-maintained — they drifted out of sync once already.
+  document.querySelectorAll('.tool-group').forEach(g => {
+    const pill = g.querySelector('.group-count');
+    if (pill) pill.textContent = g.querySelectorAll('.tool-card').length;
+  });
 
   function toggleTheme() {
     const root = document.documentElement;
