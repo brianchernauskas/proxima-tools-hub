@@ -68,7 +68,16 @@
     @media(max-width:640px) { .hero { padding:30px 20px 22px; } .last-updated { text-align:left; } }
 
     /* FILTERS */
-    .filter-bar { padding:20px 40px 0;display:flex;gap:8px;flex-wrap:wrap; }
+    .filter-bar { padding:20px 40px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center; }
+    .search-wrap { position:relative;margin-left:auto; }
+    .search-input { background:var(--card);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12.5px;padding:7px 30px 7px 32px;border-radius:20px;width:230px;outline:none; }
+    .search-input:focus { border-color:var(--proxima);width:280px; }
+    .search-input::placeholder { color:var(--text-3); }
+    .search-icon { position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-3);pointer-events:none; }
+    .search-clear { position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-3);cursor:pointer;font-size:15px;line-height:1;padding:0;display:none; }
+    .search-clear.show { display:block; }
+    .search-clear:hover { color:var(--text); }
+    @media(max-width:720px) { .search-wrap { margin-left:0;width:100%; } .search-input, .search-input:focus { width:100%; } }
     .filter-btn { background:var(--card);border:1px solid var(--border);color:var(--text-2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:.02em; }
     .filter-btn:hover { color:var(--text);border-color:var(--text-3); }
     .filter-btn.active { background:var(--proxima);border-color:var(--proxima);color:#fff; }
@@ -107,6 +116,14 @@
     .entry-link:hover { text-decoration:underline; }
 
     .empty { color:var(--text-3);font-size:13px;font-style:italic;padding:30px 0; }
+
+    .result-count { font-size:11.5px;color:var(--text-3);margin-bottom:14px;font-variant-numeric:tabular-nums; }
+    .load-more-wrap { display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:22px; }
+    .load-more { background:var(--card);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12.5px;font-weight:600;padding:10px 24px;border-radius:20px;cursor:pointer; }
+    .load-more:hover { border-color:var(--proxima);color:var(--proxima); }
+    .load-more-note { font-size:11px;color:var(--text-3); }
+    .mark-hint { font-size:11.5px;color:var(--text-3);font-style:italic;text-align:center;margin-top:22px;padding-top:14px;border-top:1px solid var(--border-sub); }
+    mark { background:var(--proxima-dim);color:inherit;border-radius:2px;padding:0 1px; }
 
     /* FOOTER */
     .site-footer { border-top:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; }
@@ -154,6 +171,11 @@
   <button class="filter-btn"        data-filter="aws"      onclick="setFilter(this)">AWS</button>
   <button class="filter-btn"        data-filter="azure"    onclick="setFilter(this)">Azure</button>
   <button class="filter-btn"        data-filter="gcp"      onclick="setFilter(this)">GCP</button>
+  <div class="search-wrap">
+    <svg class="search-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <input id="search-input" class="search-input" type="search" placeholder="Search all history…" oninput="setSearch(this.value)" autocomplete="off">
+    <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search">&times;</button>
+  </div>
 </div>
 
 <section class="feed" id="feed"></section>
@@ -250,26 +272,59 @@ function fmtMonth(iso) {
   return new Date(y, m-1, 1).toLocaleDateString('en-US',{month:'long',year:'numeric'});
 }
 
-let activeFilter = 'all';
+const PAGE_SIZE = 25;
 
-function matches(e) {
+let activeFilter = 'all';
+let searchTerm   = '';
+let shownCount   = PAGE_SIZE;
+
+function matchesFilter(e) {
   if (activeFilter === 'all') return true;
   if (activeFilter === 'industry' || activeFilter === 'update') return e.kind === activeFilter;
   return e.cloud === activeFilter;
 }
 
-function render() {
-  const sorted = [...ENTRIES].sort((a,b) => b.date.localeCompare(a.date));
-  const shown  = sorted.filter(matches);
-  const feed   = document.getElementById('feed');
+// Search runs against the full archive, not just the loaded page
+function matchesSearch(e) {
+  if (!searchTerm) return true;
+  const hay = [e.title, e.body, e.impact || '', CLOUD_LABEL[e.cloud] || '', KIND_LABEL[e.kind] || '', fmtDate(e.date)]
+    .join(' ').toLowerCase();
+  return searchTerm.toLowerCase().split(/\s+/).filter(Boolean).every(t => hay.includes(t));
+}
 
-  if (!shown.length) {
-    feed.innerHTML = '<p class="empty">No entries match this filter yet.</p>';
+function escapeHTML(s) {
+  return s.replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+}
+
+function highlight(html) {
+  if (!searchTerm) return html;
+  const terms = searchTerm.trim().split(/\s+/).filter(Boolean).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  if (!terms.length) return html;
+  // Only touch text outside of tags and entities so markup stays intact
+  return html.replace(/>([^<]+)</g, (m, text) =>
+    '>' + text.replace(new RegExp('(?<!&[a-z]{0,8})(' + terms.join('|') + ')', 'gi'), '<mark>$1</mark>') + '<'
+  );
+}
+
+function render() {
+  const sorted   = [...ENTRIES].sort((a, b) => b.date.localeCompare(a.date));
+  const filtered = sorted.filter(e => matchesFilter(e) && matchesSearch(e));
+  const page     = filtered.slice(0, shownCount);
+  const feed     = document.getElementById('feed');
+
+  if (!filtered.length) {
+    feed.innerHTML = searchTerm
+      ? `<p class="empty">No entries match “${escapeHTML(searchTerm)}”. Try a different term or clear the filters.</p>`
+      : '<p class="empty">No entries match this filter yet.</p>';
     return;
   }
 
+  const countLine = filtered.length > PAGE_SIZE
+    ? `<div class="result-count">Showing ${page.length} of ${filtered.length} entries</div>`
+    : `<div class="result-count">${filtered.length} ${filtered.length === 1 ? 'entry' : 'entries'}</div>`;
+
   let html = '', lastMonth = '';
-  for (const e of shown) {
+  for (const e of page) {
     const month = fmtMonth(e.date);
     if (month !== lastMonth) { html += `<div class="month-label">${month}</div>`; lastMonth = month; }
     html += `<article class="entry ${e.cloud}">
@@ -284,13 +339,42 @@ function render() {
       ${e.link ? `<a class="entry-link" href="${e.link.url}" target="_blank">${e.link.label} →</a>` : ''}
     </article>`;
   }
-  feed.innerHTML = html;
+
+  const remaining = filtered.length - page.length;
+  if (remaining > 0) {
+    html += `<div class="load-more-wrap">
+      <button class="load-more" onclick="loadMore()">Load ${Math.min(remaining, PAGE_SIZE)} older ${remaining === 1 ? 'entry' : 'entries'}</button>
+      <span class="load-more-note">${remaining} older ${remaining === 1 ? 'entry' : 'entries'} in the archive</span>
+    </div>`;
+  } else if (filtered.length > PAGE_SIZE) {
+    html += '<p class="mark-hint">End of archive — all entries loaded.</p>';
+  }
+
+  feed.innerHTML = countLine + highlight(html);
+}
+
+function loadMore() {
+  shownCount += PAGE_SIZE;
+  render();
 }
 
 function setFilter(btn) {
   activeFilter = btn.dataset.filter;
+  shownCount = PAGE_SIZE;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
   render();
+}
+
+function setSearch(val) {
+  searchTerm = val.trim();
+  shownCount = PAGE_SIZE;
+  document.getElementById('search-clear').classList.toggle('show', !!searchTerm);
+  render();
+}
+
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  setSearch('');
 }
 
 // Latest date drives the "last updated" stamp
