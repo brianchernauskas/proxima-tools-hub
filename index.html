@@ -37,6 +37,8 @@
       --news-dim:     rgba(129,140,248,.12);
       --saas:         #00A1E0;
       --saas-dim:     rgba(0,161,224,.1);
+      --spend:        #14B8A6;
+      --spend-dim:    rgba(20,184,166,.1);
     }
     :root[data-theme="light"],
     @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
@@ -135,6 +137,7 @@
     .tool-card.baseline::before { background:var(--baseline); }
     .tool-card.news::before { background:var(--news); }
     .tool-card.saas::before { background:var(--saas); }
+    .tool-card.spend::before { background:var(--spend); }
 
     .tool-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;display:inline-block;width:fit-content;border-radius:3px; }
     .aws .tool-tag      { color:var(--aws);      background:var(--aws-dim); }
@@ -280,6 +283,25 @@
   </div>
 
   <!-- ENGAGEMENT SIZING -->
+  <div class="tool-group">
+    <div class="group-header">
+      <span class="group-label">Diagnostics</span>
+      <span class="group-count">1</span>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card spend" onclick="window.open('https://brianchernauskas.github.io/it-spend-diagnostic/','_blank')">
+        <span class="tool-tag">All IT Spend · Triage</span>
+        <div class="tool-name">IT Spend Diagnostic</div>
+        <p class="tool-desc">Loads two years of supplier spend — cloud, software, telecom, hardware, services — and identifies where negotiable money actually sits. Merges supplier name variants, reconciles inconsistent categories, and surfaces concentration, growth, sprawl, and consolidation candidates. Routes each priority supplier to the playbook that covers it. Parses locally; nothing is uploaded or stored.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open diagnostic <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="tool-group">
     <div class="group-header">
       <span class="group-label">Engagement Sizing</span>
