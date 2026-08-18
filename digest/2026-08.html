@@ -203,27 +203,28 @@
           <tr>
             <td>Azure</td>
             <td>Add an EA-vs-MCA-E price-lock comparison module — surfaces the loss of price protection as the top risk of migrating off EA. Highest-value addition this quarter.</td>
-            <td><span class="status open">Open</span></td>
+            <td><span class="status shipped">✓ Shipped</span></td>
           </tr>
           <tr>
             <td>Azure</td>
             <td>Add an early-renewal prompt/calculator for clients whose EA anniversary falls before their next scheduled renewal, to lock in pre-increase pricing.</td>
-            <td><span class="status open">Open</span></td>
+            <td><span class="status shipped">✓ Shipped</span></td>
           </tr>
           <tr>
             <td>GCP</td>
             <td>Update CUD savings calculations to reflect multiprice direct-discount billing (retire the legacy credit-reconciliation math).</td>
-            <td><span class="status open">Open</span></td>
+            <td><span class="status shipped">✓ Shipped</span></td>
           </tr>
           <tr>
             <td>GCP</td>
             <td>Add a Vertex AI CUD-discount line (18–32% standard, 38–52% for Provisioned Throughput) — AI spend is under-negotiated and currently absent from the savings model.</td>
-            <td><span class="status open">Open</span></td>
+            <td><span class="status shipped">✓ Shipped</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:14px;font-size:12.5px;color:var(--text-3);font-style:italic;">Both AWS recommendations shipped August 18, 2026 — PPA terminology adopted tool-wide and a new Accelerated Compute (GPU) Usage input wired into leverage scoring, tactics, alerts, concession asks, and diligence questions. Azure and GCP items remain open. Recommendations from Issue 01 (July 2026) all shipped and were verified against planner source on August 14, 2026.</p>
+    <p style="margin-top:14px;font-size:12.5px;color:var(--text-3);font-style:italic;">All six recommendations shipped August 18, 2026. AWS: PPA terminology adopted tool-wide plus a new Accelerated Compute (GPU) Usage input. Azure: a new EA-vs-MCA-E price protection section and an EA anniversary input driving an early-renewal window. GCP: Vertex AI added as Layer 4 of the discount stack, and multiprice direct-discount billing guidance for spend-based CUDs. Each is wired through the leverage or discount model, tactics, alerts, concession asks, and diligence questions. Recommendations from Issue 01 (July 2026) all shipped and were verified against planner source on August 14, 2026.</p>
+    <p style="margin-top:10px;font-size:12.5px;color:var(--text-3);font-style:italic;">Note on the GCP multiprice item: the planners never modelled CUD savings via credit reconciliation, so there was no legacy math to retire. The gap was missing guidance, which is what shipped — including a warning that internal savings reports and chargeback splits still built on credit reconciliation are measuring something that no longer exists.</p>
   </section>
 
   <!-- SOURCING NOTE -->
