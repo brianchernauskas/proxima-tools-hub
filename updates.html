@@ -202,6 +202,96 @@
    ============================================================ */
 const ENTRIES = [
 
+
+  {
+    date: '2026-08-18',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'Planner updates shipped from the August scan',
+    body: 'Six tool changes went in across the three cloud planners. AWS: PPA terminology adopted tool-wide plus a new Accelerated Compute (GPU) usage input. Azure: an EA-vs-MCA-E price protection section, and an EA anniversary input that drives an early-renewal window. GCP: Vertex AI added as a fourth layer of the discount stack, plus guidance for multiprice direct-discount billing on spend-based CUDs.',
+    impact: 'Each change is wired through the leverage or discount model, tactics, alerts, concession asks, and diligence questions rather than sitting as standalone copy. One correction worth noting: the GCP recommendation called for retiring legacy credit-reconciliation math, but the planners never modelled CUD savings that way. The real gap was missing guidance, including a warning that any internal savings report or chargeback split still built on credit reconciliation is measuring something that no longer exists.'
+  },
+
+  {
+    date: '2026-08-18',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'AWS rebrands EDP to Private Pricing Agreement (PPA)',
+    body: 'AWS now refers to all negotiated enterprise discount contracts as Private Pricing Agreements. The commercial mechanics are unchanged — the same 5–25% discount tiers, with the top tier still requiring a 5-year term and $50M+ annual commitment.',
+    impact: 'Purely a naming change, but expect PPA in contract paperwork and in account team conversations from here. Client-facing material that still says EDP will read as dated.',
+    link: { label: 'Source', url: 'https://redresscompliance.com/aws-edp-negotiation-enterprise-playbook-2026.html' }
+  },
+
+  {
+    date: '2026-08-18',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'EA auto-renewal proposes an inflated commitment off trailing consumption',
+    body: 'Microsoft EA auto-renewal triggers 30–90 days before expiration, and the proposed new Azure Monetary Commitment is built from trailing-12-month consumption. Practitioners report this commonly lands 15–30% above the historical average.',
+    impact: 'Renewal is also the only point in a 3-year EA term where committed quantities can be reduced, so an auto-renewal that passes unchallenged locks in an inflated commit for the full next term. Diarise the notice window and size the commitment independently before Microsoft proposes a number.',
+    link: { label: 'Source', url: 'https://redresscompliance.com/microsoft-enterprise-agreement-guide' }
+  },
+
+  {
+    date: '2026-08-18',
+    kind: 'industry',
+    cloud: 'gcp',
+    title: 'Vertex AI is the least-scrutinised line item in Google Cloud deals',
+    body: 'Vertex AI consumption counts toward CUD and PPA commitments, but analysis of recent Google Cloud negotiations shows AI meters growing faster than any other while receiving the least negotiation attention. Inside a CUD, Vertex AI reportedly runs 18–32% below published rates; Provisioned Throughput inside a CUD runs 38–52% below standalone on-demand.',
+    impact: 'Flexibility and burn-down terms for AI consumption are increasingly written into side letters rather than the base agreement, so standard CUD terms should not be assumed to apply. Ask for them explicitly. Discount figures come from advisory commentary, not Google documentation — confirm before quoting.',
+    link: { label: 'Source', url: 'https://redresscompliance.com/google-cloud-vertex-ai-gemini-negotiation' }
+  },
+
+  {
+    date: '2026-08-18',
+    kind: 'industry',
+    cloud: 'multi',
+    title: 'Gartner treats AI pricing as its own negotiation category',
+    body: 'Gartner published “Negotiate AI and Generative AI Pricing to Avoid Skyrocketing Costs” this period, formalising what practitioners had been reporting informally.',
+    impact: 'Copilot, Vertex AI, and Bedrock consumption should be scoped and negotiated as a distinct line item rather than absorbed into general cloud spend assumptions. Renewals this quarter need an AI-bundling position that did not exist a year ago.',
+    link: { label: 'Gartner', url: 'https://www.gartner.com/en/documents/7522053' }
+  },
+
+  {
+    date: '2026-08-18',
+    kind: 'industry',
+    cloud: 'multi',
+    title: 'Rightsize before committing — post-signature cleanup cannot recover it',
+    body: 'A theme repeated across AWS, Azure, and GCP negotiation guidance this period: entering any commitment vehicle with unoptimised spend locks the waste in at a committed rate. A structured optimisation pass before sizing typically recovers 20–40% that a later cleanup cannot touch.',
+    impact: 'This reorders the engagement sequence. Optimisation is not a follow-on workstream after a renewal — done afterwards, most of its value is already contractually spent. The 20–40% figure is advisory-sourced and directional.',
+    link: { label: 'Source', url: 'https://redresscompliance.com/aws-edp-negotiation-enterprise-playbook-2026.html' }
+  },
+
+  {
+    date: '2026-07-01',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'EC2 GPU Capacity Block prices up ~20%',
+    body: 'Effective July 1, 2026, AWS raised EC2 GPU Capacity Block pricing roughly 20% across the P6-B300, P6-B200, P5, P5e, P5en, and P4de instance families. P6-B300 now bills at $14.04 per accelerator-hour and P5 (H100) at $5.191/hr in US regions. This is the second GPU increase this year. All other EC2 pricing is unchanged.',
+    impact: 'Material for any client sizing a PPA commitment around AI/ML training or inference. A commitment modelled on pre-July GPU rates will understate consumption, and the increase lands entirely on the workload category growing fastest in most estates.',
+    link: { label: 'Source', url: 'https://aiweekly.co/alerts/aws-raises-ec2-gpu-capacity-block-prices-20-from-july-1' }
+  },
+
+  {
+    date: '2026-07-01',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'EA 3-year price lock does not carry over to MCA-E or CSP',
+    body: 'EA customers whose term began before the July 2026 Microsoft 365 price increase are shielded from it for the life of that term, and new seats are added at the locked price. MCA-E and CSP annual subscriptions carry no equivalent protection.',
+    impact: 'This is the single largest hidden cost of migrating off EA, and Microsoft is actively pushing MACC customers toward MCA-E. Clients with an EA anniversary falling before their next scheduled renewal should evaluate an early renewal or term extension to lock pre-increase pricing before auto-renewal removes the option.',
+    link: { label: 'Directions on Microsoft', url: 'https://www.directionsonmicrosoft.com/want-to-sign-an-azure-consumption-agreement-soon-mca-may-be-your-only-option/' }
+  },
+
+  {
+    date: '2026-07-01',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Copilot now bundled by default into M365 Business Standard and Premium',
+    body: 'From July 1, 2026, every Microsoft 365 Business Standard and Business Premium subscription includes Copilot under new SKU names. Separately, the Microsoft 365 E7 “Frontier Suite” — E5 plus Copilot, Agent 365, and Entra Suite at $99/user/month — became purchasable May 1, 2026.',
+    impact: 'Both change how AI spend enters EA and MCA-E renewal math. Copilot arriving by default means it is no longer a discrete line to accept or decline, so the negotiation shifts to what the bundled price should be rather than whether to buy it at all.',
+    link: { label: 'Source', url: 'https://www.velosio.com/blog/m365-copilot-pricing-reset-2026/' }
+  },
+
   {
     date: '2026-08-14',
     kind: 'update',
