@@ -203,6 +203,26 @@
 const ENTRIES = [
 
   {
+    date: '2026-09-11',
+    kind: 'update',
+    cloud: 'gcp',
+    title: 'GCP Planner — added Gemini Enterprise Flexible Savings Plans guidance',
+    body: 'The planner now surfaces Gemini Enterprise Flexible Savings Plans (FSPs) as a tactic alongside the existing Vertex AI content, plus a matching diligence question. It appears wherever Vertex AI use or AI-expansion plans are already flagged, so it does not require a new input.',
+    impact: 'Clients adopting Gemini Enterprise seats or agent workloads now get a concrete ask: route that spend through an FSP tied to the EA rather than paying list, and get spend caps and anomaly alerts confirmed before go-live.',
+    link: { label: 'Open GCP Planner', url: 'https://brianchernauskas.github.io/gcp-negotiation-planner/' }
+  },
+
+  {
+    date: '2026-08-26',
+    kind: 'industry',
+    cloud: 'gcp',
+    title: 'Gemini Enterprise gets its own commitment vehicle: Flexible Savings Plans',
+    body: 'Google introduced Flexible Savings Plans (FSPs) for Gemini Enterprise — a spend-based commitment separate from Vertex AI CUDs, discounting token costs 10% on a 1-year term and 20% on a 3-year term, with no minimum or maximum spend and month-to-month adjustment as usage grows. FSPs draw down against an existing Google Cloud EA. The same update added pay-as-you-go pricing, per-project spend caps, and anomaly alerts for Gemini Enterprise and agent workloads (Antigravity, Android Studio AI), with a "deferred execution" discount of up to 50% for off-peak agent workloads coming soon.',
+    impact: 'This is a second, distinct AI commitment lever alongside Vertex AI CUDs — model Gemini Enterprise seat and agent-workload spend into EA sizing rather than treating it as an unplanned pay-as-you-go add-on. Push for the FSP rate to be documented in the EA itself, and confirm spend caps and anomaly alerts are configured before rollout so an agent workload can&rsquo;t run past a fixed monthly commitment unnoticed.',
+    link: { label: 'Google Cloud Blog', url: 'https://cloud.google.com/blog/products/ai-machine-learning/flexible-billing-and-cost-controls-for-agents-on-google-cloud' }
+  },
+
+  {
     date: '2026-08-20',
     kind: 'update',
     cloud: 'tool',
