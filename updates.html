@@ -205,6 +205,24 @@ const ENTRIES = [
   {
     date: '2026-09-14',
     kind: 'update',
+    cloud: 'multi',
+    title: 'All planners — pricing schedule freeze and MFN price-down terms added',
+    body: 'Two contract terms now appear in the concessions list of the AWS, Azure, GCP, and Salesforce planners. Pricing Schedule Freeze pins any reference to the vendor\'s published pricing pages to a dated snapshot. Price-Down (MFN) Trigger passes any published list price reduction through to the customer within 30 days, with negotiated discounts still stacked on top.',
+    impact: 'Order forms frequently reference a live pricing page by URL rather than printing the rates, which lets a vendor change effective pricing mid-term without an amendment. Salesforce\'s ~6% list increase in August 2025 is exactly that scenario. The MFN term matters most where prices genuinely fall — AWS and GCP routinely cut rates, and AI product pricing is still moving — while the freeze matters everywhere.'
+  },
+
+  {
+    date: '2026-09-14',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'All planners — sample output available without filling in the form',
+    body: 'Each planner now has a View Sample Output button on its first step that renders a complete strategy from a fixed example client: a mid-market SaaS company spending $10M–$25M a year with the provider ($1M–$2.5M ACV for Salesforce), on a 3-year term with renewal 6–12 months out. The profile is kept consistent across all four planners.',
+    impact: 'Useful for showing a prospect or new team member what the tools produce before asking for their data. Sample output is marked on screen with a banner and title suffix, and in the PDF export with a watermark on every page and a letterhead tag. Real Proxima deal calibration data is deliberately excluded from sample output so logged client outcomes never appear in a demo.'
+  },
+
+  {
+    date: '2026-09-14',
+    kind: 'update',
     cloud: 'azure',
     title: 'Azure Planner — added regional AI Foundry pricing alert',
     body: 'The planner now flags that Azure AI Foundry model deployments outside the default global region carry a price premium, whenever AI/ML use is selected. It appears as an informational alert alongside the existing Copilot and Azure OpenAI content.',
