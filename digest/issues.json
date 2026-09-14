@@ -1,5 +1,18 @@
 [
   {
+    "slug": "2026-09",
+    "issueNum": 3,
+    "date": "2026-09-14",
+    "title": "Gemini Enterprise's own savings plan, and Azure's new AI regional premium",
+    "summary": "Google gives Gemini Enterprise a commitment vehicle distinct from Vertex AI CUDs, with native spend caps and anomaly alerts built in. Microsoft adds a 7-20% regional pricing premium to Azure AI Foundry deployments outside the US, and a narrow but sharp reminder — Azure Maps' Gen1 retirement — that \"no action required\" migration notices can still carry a multiple-x cost increase.",
+    "highlights": [
+      "Gemini Enterprise Flexible Savings Plans: 10%/20% off token costs on 1yr/3yr, no minimum, drawn against the GCP EA",
+      "Azure AI Foundry regional deployments now price 7-20% above Global, effective Sept 1",
+      "Azure Maps Gen1 retires Sept 15 — an 800% increase on geocoding transactions for stragglers",
+      "Both tool recommendations from this issue shipped the same week they were identified"
+    ]
+  },
+  {
     "slug": "2026-08",
     "issueNum": 2,
     "date": "2026-08-18",
