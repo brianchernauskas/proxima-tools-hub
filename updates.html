@@ -205,6 +205,15 @@ const ENTRIES = [
   {
     date: '2026-09-14',
     kind: 'update',
+    cloud: 'tool',
+    title: 'All planners — Fill Sample Data button on every input screen',
+    body: 'Every input screen in the AWS, Azure, GCP, and Salesforce planners now has a Fill Sample Data button that populates just that screen with the same example client used by View Sample Output. A presenter can walk through the tool screen by screen, showing each question, without typing anything.',
+    impact: 'Built for live demos. Any strategy generated after using the fill buttons is marked as sample output — banner on screen, watermark in the PDF — even if some fields were changed afterwards, so a demo can never be mistaken for a client analysis. Real Proxima deal data is excluded from sample output. View Sample Output now fills the form as well, so clicking Edit Inputs from a sample shows the example values instead of blank fields.'
+  },
+
+  {
+    date: '2026-09-14',
+    kind: 'update',
     cloud: 'multi',
     title: 'All planners — pricing schedule freeze and MFN price-down terms added',
     body: 'Two contract terms now appear in the concessions list of the AWS, Azure, GCP, and Salesforce planners. Pricing Schedule Freeze pins any reference to the vendor\'s published pricing pages to a dated snapshot. Price-Down (MFN) Trigger passes any published list price reduction through to the customer within 30 days, with negotiated discounts still stacked on top.',
