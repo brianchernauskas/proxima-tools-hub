@@ -203,6 +203,16 @@
 const ENTRIES = [
 
   {
+    date: '2026-09-14',
+    kind: 'update',
+    cloud: 'azure',
+    title: 'Azure Planner — added regional AI Foundry pricing alert',
+    body: 'The planner now flags that Azure AI Foundry model deployments outside the default global region carry a price premium, whenever AI/ML use is selected. It appears as an informational alert alongside the existing Copilot and Azure OpenAI content.',
+    impact: 'A client sizing a MACC or EA commitment with AI workloads pinned to the EU, APAC, or another compliance region now gets a prompt to size that spend off regional rates rather than the global rate card, before the commitment is set.',
+    link: { label: 'Open Azure Planner', url: 'https://brianchernauskas.github.io/azure-negotiation-planner/' }
+  },
+
+  {
     date: '2026-09-11',
     kind: 'update',
     cloud: 'gcp',
@@ -220,6 +230,26 @@ const ENTRIES = [
     body: 'Google introduced Flexible Savings Plans (FSPs) for Gemini Enterprise — a spend-based commitment separate from Vertex AI CUDs, discounting token costs 10% on a 1-year term and 20% on a 3-year term, with no minimum or maximum spend and month-to-month adjustment as usage grows. FSPs draw down against an existing Google Cloud EA. The same update added pay-as-you-go pricing, per-project spend caps, and anomaly alerts for Gemini Enterprise and agent workloads (Antigravity, Android Studio AI), with a "deferred execution" discount of up to 50% for off-peak agent workloads coming soon.',
     impact: 'This is a second, distinct AI commitment lever alongside Vertex AI CUDs — model Gemini Enterprise seat and agent-workload spend into EA sizing rather than treating it as an unplanned pay-as-you-go add-on. Push for the FSP rate to be documented in the EA itself, and confirm spend caps and anomaly alerts are configured before rollout so an agent workload can&rsquo;t run past a fixed monthly commitment unnoticed.',
     link: { label: 'Google Cloud Blog', url: 'https://cloud.google.com/blog/products/ai-machine-learning/flexible-billing-and-cost-controls-for-agents-on-google-cloud' }
+  },
+
+  {
+    date: '2026-09-01',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Azure AI Foundry adds a regional pricing premium for model deployments',
+    body: 'Effective September 1, 2026, Microsoft Foundry updated pricing for model deployments outside the default global region. Global pricing is unchanged, but the EU Data Zone now prices 9% above Global, other regional deployments outside the US run 7–16% above Global, and a new APAC Data Zone launches at 20% above Global. Microsoft frames the premium as the cost of delivering AI within a specific geography at high availability — data residency, compliance, and latency requirements.',
+    impact: 'Any client sizing a MACC or EA commitment around Azure OpenAI/Foundry consumption in the EU, APAC, or another compliance-driven region needs to model that premium explicitly rather than assume global list rates — a regionally concentrated AI estate runs meaningfully hotter than a US-anchored one at the same token volume. Worth raising proactively if a renewal is treating AI spend as a single blended line.',
+    link: { label: 'Microsoft Tech Community', url: 'https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/microsoft-foundry-model-deployment-pricing-update/4535385' }
+  },
+
+  {
+    date: '2026-06-22',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Azure Maps Gen1 pricing tier retires Sept 15 — up to a 9x cost increase for stragglers',
+    body: 'Microsoft retires the Azure Maps Gen1 (Standard S0/S1) pricing tier on September 15, 2026. Any account still on Gen1 auto-migrates to Gen2, no action required — but Gen2 prices some transaction types far higher: geocoding moves from $0.50 to $4.50 per 1,000 transactions, an 800% increase. A 100,000-transaction/month application goes from roughly $600 to $5,400 a year with no functionality change.',
+    impact: 'A narrow line item on its own, but it is another instance of a pattern worth watching across all three providers: a "simplified" pricing-tier consolidation that lands as an order-of-magnitude increase on specific meters, announced months ahead but easy to miss past the "no action required" framing. Worth a one-time Azure Maps usage check for any client with geospatial workloads before the auto-migration date.',
+    link: { label: 'Microsoft Q&A', url: 'https://learn.microsoft.com/en-us/answers/questions/1377213/retirement-announcement-azure-maps-gen1-price-tier' }
   },
 
   {
