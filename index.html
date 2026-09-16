@@ -497,6 +497,15 @@
         </div>
       </div>
 
+      <div class="tool-card saas" onclick="window.open('https://brianchernauskas.github.io/adobe-negotiation-planner/','_blank')">
+        <span class="tool-tag">Adobe · SaaS</span>
+        <div class="tool-name">Adobe Negotiation Planner</div>
+        <p class="tool-desc">Models VIP, 3-Year Commit, ETLA, and Experience Cloud renewals against Adobe's fiscal calendar and 2026 price increases. Sizes idle and over-specified Creative Cloud seats, and adds an optional M&amp;A module for acquisitions, mergers, and divestitures.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -530,7 +539,7 @@
   if (localStorage.getItem('proxima-auth') === HASH) document.getElementById('auth-gate').classList.add('hidden');
 
   // Bump this whenever a new entry is added to updates.html
-  const NEWS_LAST_UPDATED = '2026-09-14';
+  const NEWS_LAST_UPDATED = '2026-09-16';
   (function () {
     const [y, m, d] = NEWS_LAST_UPDATED.split('-').map(Number);
     document.getElementById('news-last-updated').textContent =
