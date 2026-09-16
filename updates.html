@@ -16,6 +16,8 @@
       --gcp:#34D399;   --gcp-dim:rgba(52,211,153,.1);
       --multi:#A78BFA; --multi-dim:rgba(167,139,250,.1);
       --tool:#22D3EE;  --tool-dim:rgba(34,211,238,.1);
+      --salesforce:#0284C7; --salesforce-dim:rgba(2,132,199,.1);
+      --adobe:#EF4444; --adobe-dim:rgba(239,68,68,.1);
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -97,6 +99,8 @@
     .entry.gcp::before   { background:var(--gcp); }
     .entry.multi::before { background:var(--multi); }
     .entry.tool::before  { background:var(--tool); }
+    .entry.salesforce::before { background:var(--salesforce); }
+    .entry.adobe::before { background:var(--adobe); }
 
     .entry-top { display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px; }
     .entry-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px; }
@@ -105,6 +109,8 @@
     .gcp .entry-tag   { color:var(--gcp);background:var(--gcp-dim); }
     .multi .entry-tag { color:var(--multi);background:var(--multi-dim); }
     .tool .entry-tag  { color:var(--tool);background:var(--tool-dim); }
+    .salesforce .entry-tag { color:var(--salesforce);background:var(--salesforce-dim); }
+    .adobe .entry-tag { color:var(--adobe);background:var(--adobe-dim); }
     .entry-kind { font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border-sub);padding:2px 7px;border-radius:3px; }
     .entry-date { font-size:11px;color:var(--text-3);margin-left:auto;font-variant-numeric:tabular-nums; }
 
@@ -157,7 +163,7 @@
   <div>
     <p class="hero-eyebrow">Running Log</p>
     <h1>Hyperscaler news &amp;<br>planner updates.</h1>
-    <p>Program changes across AWS, Azure, and GCP that affect negotiating position — paired with a record of what changed inside the Proxima planners and why.</p>
+    <p>Program changes across AWS, Azure, GCP, Salesforce, and Adobe that affect negotiating position — paired with a record of what changed inside the Proxima planners and why.</p>
   </div>
   <div class="last-updated">
     <div class="last-updated-label">Last updated</div>
@@ -172,6 +178,8 @@
   <button class="filter-btn"        data-filter="aws"      onclick="setFilter(this)">AWS</button>
   <button class="filter-btn"        data-filter="azure"    onclick="setFilter(this)">Azure</button>
   <button class="filter-btn"        data-filter="gcp"      onclick="setFilter(this)">GCP</button>
+  <button class="filter-btn"        data-filter="salesforce" onclick="setFilter(this)">Salesforce</button>
+  <button class="filter-btn"        data-filter="adobe"    onclick="setFilter(this)">Adobe</button>
   <div class="search-wrap">
     <svg class="search-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     <input id="search-input" class="search-input" type="search" placeholder="Search all history…" oninput="setSearch(this.value)" autocomplete="off">
@@ -194,7 +202,7 @@
    date    : 'YYYY-MM-DD'
    kind    : 'industry'  (hyperscaler / market change)
            | 'update'    (change made to a Proxima tool)
-   cloud   : 'aws' | 'azure' | 'gcp' | 'multi' | 'tool'
+   cloud   : 'aws' | 'azure' | 'gcp' | 'salesforce' | 'adobe' | 'multi' | 'tool'
    title   : short headline
    body    : what happened
    impact  : (optional) what it means for negotiations
@@ -205,7 +213,7 @@ const ENTRIES = [
   {
     date: '2026-09-16',
     kind: 'update',
-    cloud: 'tool',
+    cloud: 'adobe',
     title: 'New tool — Adobe Negotiation Planner, with an optional M&A module',
     body: 'A fifth planner covers Adobe renewals across VIP, VIP 3-Year Commit, ETLA, and Experience Cloud agreements. It scores leverage against Adobe\'s fiscal calendar (year ends the Friday nearest November 30), models the renewal increase and discount off list, and sizes recoverable spend from idle licenses, over-specified Creative Cloud Pro seats, and unused Experience Cloud capacity. Switching on the M&A module adds transaction-specific guidance for acquisitions, mergers, being acquired, and divestitures — license transfer, assignment and change-of-control rights, consolidating parallel agreements, carve-out transition rights, and pre-close clean-team cautions. Adobe deals can now be logged in Deal Calibration.',
     impact: 'Adobe\'s 2026 moves change renewal math: Acrobat Standard for business pricing rose April 1, the June 1 VIP Marketplace pricelist raised most Creative Cloud and Acrobat SKUs and removed the Level 2 volume discount, Semrush closed April 28 and was folded into CX Enterprise, Topaz Labs is pending, and Anil Chakravarthy becomes CEO on December 1 — making Adobe\'s September–November Q4 the last quarter under current leadership. Each appears in the planner as a dated, sourced event.',
@@ -497,7 +505,7 @@ const ENTRIES = [
 /* ============================================================ */
 
 const KIND_LABEL  = { industry:'Industry', update:'Planner update' };
-const CLOUD_LABEL = { aws:'AWS', azure:'Azure', gcp:'GCP', multi:'Multi-Cloud', tool:'Proxima Tools' };
+const CLOUD_LABEL = { aws:'AWS', azure:'Azure', gcp:'GCP', salesforce:'Salesforce', adobe:'Adobe', multi:'Multi-Cloud', tool:'Proxima Tools' };
 
 function fmtDate(iso) {
   const [y,m,d] = iso.split('-').map(Number);
