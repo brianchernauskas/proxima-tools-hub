@@ -23,6 +23,8 @@
       --aws-dim:      rgba(245,158,11,.1);
       --azure:        #3B82F6;
       --azure-dim:    rgba(59,130,246,.1);
+      --microsoft:    #0EA5A4;
+      --microsoft-dim: rgba(14,165,164,.1);
       --gcp:          #34D399;
       --gcp-dim:      rgba(52,211,153,.1);
       --grid:         #FB923C;
@@ -130,6 +132,7 @@
 
     .tool-card.aws::before    { background:var(--aws); }
     .tool-card.azure::before  { background:var(--azure); }
+    .tool-card.microsoft::before { background:var(--microsoft); }
     .tool-card.gcp::before    { background:var(--gcp); }
     .tool-card.grid::before   { background:var(--grid); }
     .tool-card.playbook::before { background:var(--playbook); }
@@ -142,6 +145,7 @@
     .tool-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;display:inline-block;width:fit-content;border-radius:3px; }
     .aws .tool-tag      { color:var(--aws);      background:var(--aws-dim); }
     .azure .tool-tag    { color:var(--azure);    background:var(--azure-dim); }
+    .microsoft .tool-tag { color:var(--microsoft); background:var(--microsoft-dim); }
     .gcp .tool-tag      { color:var(--gcp);      background:var(--gcp-dim); }
     .grid .tool-tag     { color:var(--grid);     background:var(--grid-dim); }
     .playbook .tool-tag { color:var(--playbook); background:var(--playbook-dim); }
@@ -161,6 +165,7 @@
 
     .aws .tool-link      { color:var(--aws); }
     .azure .tool-link    { color:var(--azure); }
+    .microsoft .tool-link { color:var(--microsoft); }
     .gcp .tool-link      { color:var(--gcp); }
     .grid .tool-link     { color:var(--grid); }
     .playbook .tool-link { color:var(--playbook); }
@@ -239,7 +244,7 @@
   <div class="tool-group">
     <div class="group-header">
       <span class="group-label">Negotiation Planners / Hyperscaler News and Planner Updates</span>
-      <span class="group-count">4</span>
+      <span class="group-count">5</span>
     </div>
     <div class="tool-grid">
 
@@ -256,6 +261,15 @@
         <span class="tool-tag">Azure · Cloud</span>
         <div class="tool-name">Azure Negotiation Planner</div>
         <p class="tool-desc">Guides EA and MCA-E renewal strategy, surfaces EA pricing level risk (Levels B/C/D removed Nov 2025), and scores leverage across vehicle choice, M365 bundling, and Copilot commitments.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card microsoft" onclick="window.open('https://brianchernauskas.github.io/microsoft-negotiation-planner/','_blank')">
+        <span class="tool-tag">Microsoft · Enterprise</span>
+        <div class="tool-name">Microsoft Negotiation Planner</div>
+        <p class="tool-desc">One strategy across Azure, Microsoft 365, Copilot, Security, Dynamics, GitHub, and Unified Support. Sets a target for each product line, shows what to trade for what, sizes July 2026 M365 price exposure, and reuses the Azure planner's ACD engine.</p>
         <div class="tool-footer">
           <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
@@ -484,7 +498,7 @@
   <div class="tool-group">
     <div class="group-header">
       <span class="group-label">SaaS &amp; Application Negotiation</span>
-      <span class="group-count">1</span>
+      <span class="group-count">2</span>
     </div>
     <div class="tool-grid">
 
