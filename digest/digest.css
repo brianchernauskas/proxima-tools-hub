@@ -13,6 +13,7 @@
   --multi:#A78BFA; --multi-dim:rgba(167,139,250,.1);
   --salesforce:#0284C7; --salesforce-dim:rgba(2,132,199,.1);
   --adobe:#EF4444; --adobe-dim:rgba(239,68,68,.1);
+  --oracle:#C74634; --oracle-dim:rgba(199,70,52,.1);
   --ok:#059669;    --ok-dim:rgba(5,150,105,.1);
 }
 @media (prefers-color-scheme: dark) {
@@ -83,12 +84,14 @@ a { color:inherit; text-decoration:none; }
 .item.gcp::before   { background:var(--gcp); }
 .item.salesforce::before { background:var(--salesforce); }
 .item.adobe::before { background:var(--adobe); }
+.item.oracle::before { background:var(--oracle); }
 .item-tag { font-family:'Courier New',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--multi-dim);color:var(--multi);margin-bottom:7px;display:inline-block; }
 .item.aws   .item-tag { background:var(--aws-dim);color:var(--aws); }
 .item.azure .item-tag { background:var(--azure-dim);color:var(--azure); }
 .item.gcp   .item-tag { background:var(--gcp-dim);color:var(--gcp); }
 .item.salesforce .item-tag { background:var(--salesforce-dim);color:var(--salesforce); }
 .item.adobe .item-tag { background:var(--adobe-dim);color:var(--adobe); }
+.item.oracle .item-tag { background:var(--oracle-dim);color:var(--oracle); }
 .item h3 { font-family:Georgia,serif;font-size:15px;font-weight:700;line-height:1.35;margin-bottom:5px; }
 .item p { font-size:13.5px;color:var(--text-2);line-height:1.7; }
 
@@ -100,6 +103,7 @@ a { color:inherit; text-decoration:none; }
 .provider.gcp::before   { background:var(--gcp); }
 .provider.salesforce::before { background:var(--salesforce); }
 .provider.adobe::before { background:var(--adobe); }
+.provider.oracle::before { background:var(--oracle); }
 .provider p { font-size:14px;color:var(--text-2);line-height:1.75; }
 .provider p + p { margin-top:12px; }
 .provider strong { color:var(--text); }

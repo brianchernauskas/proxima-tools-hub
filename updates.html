@@ -18,6 +18,7 @@
       --tool:#22D3EE;  --tool-dim:rgba(34,211,238,.1);
       --salesforce:#0284C7; --salesforce-dim:rgba(2,132,199,.1);
       --adobe:#EF4444; --adobe-dim:rgba(239,68,68,.1);
+      --oracle:#C74634; --oracle-dim:rgba(199,70,52,.1);
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -101,6 +102,7 @@
     .entry.tool::before  { background:var(--tool); }
     .entry.salesforce::before { background:var(--salesforce); }
     .entry.adobe::before { background:var(--adobe); }
+    .entry.oracle::before { background:var(--oracle); }
 
     .entry-top { display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px; }
     .entry-tag { font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px; }
@@ -111,6 +113,7 @@
     .tool .entry-tag  { color:var(--tool);background:var(--tool-dim); }
     .salesforce .entry-tag { color:var(--salesforce);background:var(--salesforce-dim); }
     .adobe .entry-tag { color:var(--adobe);background:var(--adobe-dim); }
+    .oracle .entry-tag { color:var(--oracle);background:var(--oracle-dim); }
     .entry-kind { font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border-sub);padding:2px 7px;border-radius:3px; }
     .entry-date { font-size:11px;color:var(--text-3);margin-left:auto;font-variant-numeric:tabular-nums; }
 
@@ -180,6 +183,7 @@
   <button class="filter-btn"        data-filter="gcp"      onclick="setFilter(this)">GCP</button>
   <button class="filter-btn"        data-filter="salesforce" onclick="setFilter(this)">Salesforce</button>
   <button class="filter-btn"        data-filter="adobe"    onclick="setFilter(this)">Adobe</button>
+  <button class="filter-btn"        data-filter="oracle"   onclick="setFilter(this)">Oracle</button>
   <div class="search-wrap">
     <svg class="search-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     <input id="search-input" class="search-input" type="search" placeholder="Search all history…" oninput="setSearch(this.value)" autocomplete="off">
@@ -202,13 +206,23 @@
    date    : 'YYYY-MM-DD'
    kind    : 'industry'  (hyperscaler / market change)
            | 'update'    (change made to a Proxima tool)
-   cloud   : 'aws' | 'azure' | 'gcp' | 'salesforce' | 'adobe' | 'multi' | 'tool'
+   cloud   : 'aws' | 'azure' | 'gcp' | 'salesforce' | 'adobe' | 'oracle' | 'multi' | 'tool'
    title   : short headline
    body    : what happened
    impact  : (optional) what it means for negotiations
    link    : (optional) { label, url }
    ============================================================ */
 const ENTRIES = [
+
+  {
+    date: '2026-09-16',
+    kind: 'update',
+    cloud: 'oracle',
+    title: 'Oracle Negotiation Planner — new tool',
+    body: 'A seventh planner covers Oracle support renewals, new license and subscription purchases, ULA certification or renewal, OCI and multicloud commitments, Java SE subscriptions, and audit settlements. It scores leverage against Oracle\'s May 31 fiscal year and treats compliance exposure (audit status, VMware soft partitioning, unlicensed database options, and Java under the per-employee metric) as part of leverage. It models a support increase target, a discount off list for new purchases, recoverable support spend within Oracle\'s repricing rules, and Java list-price exposure by headcount band. An optional M&A module covers entity scope, ULA coverage, support contract consolidation, and divestiture transfer rights. A dated context table covers Q1 FY27 results, the March 2026 layoffs, the co-CEO structure, the end of free JDK 21 updates, the Database 19c support extension, and Support Rewards. Oracle deals can now be logged in Deal Calibration using the shared SaaS spend bands.',
+    impact: 'Oracle negotiations are mostly about support, which compounds every year, and about compliance claims that Oracle settles through purchases. Free JDK 21 updates ended in September 2026, so Java exposure is the most time-sensitive item for most clients right now.',
+    link: { label: 'Open Oracle Planner', url: 'https://brianchernauskas.github.io/oracle-negotiation-planner/' }
+  },
 
   {
     date: '2026-09-16',
@@ -562,7 +576,7 @@ const ENTRIES = [
 /* ============================================================ */
 
 const KIND_LABEL  = { industry:'Industry', update:'Planner update' };
-const CLOUD_LABEL = { aws:'AWS', azure:'Azure', gcp:'GCP', salesforce:'Salesforce', adobe:'Adobe', multi:'Multi-Cloud', tool:'Proxima Tools' };
+const CLOUD_LABEL = { aws:'AWS', azure:'Azure', gcp:'GCP', salesforce:'Salesforce', adobe:'Adobe', oracle:'Oracle', multi:'Multi-Cloud', tool:'Proxima Tools' };
 
 function fmtDate(iso) {
   const [y,m,d] = iso.split('-').map(Number);
