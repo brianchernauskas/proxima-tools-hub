@@ -213,6 +213,23 @@ const ENTRIES = [
   {
     date: '2026-09-16',
     kind: 'update',
+    cloud: 'tool',
+    title: 'Deal Calibration — Microsoft provider, logged by product line',
+    body: 'Microsoft deals can now be logged in Deal Calibration against total annual Microsoft spend, using the same bands the Microsoft planner asks for, and against a product line: Microsoft 365 suites, Copilot, Security, Dynamics 365, Power Platform, GitHub, Unified Support, server licensing, Visual Studio, or the whole estate blended. Azure deals stay under the Azure provider. The Microsoft planner now shows logged deals next to the target for each matching line, plus a whole-estate figure when blended deals exist.',
+    impact: 'A Copilot discount and a Unified Support discount are not comparable numbers, so pooling them would make any single Microsoft average misleading. Logging by line lets the planner\'s non-Azure ranges start calibrating against real outcomes. Sample output still excludes all logged deals.'
+  },
+
+  {
+    date: '2026-09-16',
+    kind: 'update',
+    cloud: 'tool',
+    title: 'All planners — Export Strategy no longer drops the strategy header',
+    body: 'Printed and PDF exports were losing the top of the strategy: the title, profile line, leverage score, target discount, and recommended vehicle. That header was white text on a dark background, and the background only printed when "Background graphics" was switched on — and in the Azure, GCP, and Microsoft planners it pointed at a colour that was never defined, so it never printed. The header now prints as dark text on white in all six planners, whatever the print settings. Exports also skip the on-screen fade-in, and tactic, concession, and risk cards no longer split across pages. In the Microsoft planner, the wide estate tables now fit the page instead of cutting off their right-hand columns.'
+  },
+
+  {
+    date: '2026-09-16',
+    kind: 'update',
     cloud: 'azure',
     title: 'Azure Planner — early-renewal advice corrected now that the July 2026 M365 increase is live',
     body: 'The planner had been advising EA customers to renew early or extend their term, to carry locked pricing past the July 1, 2026 Microsoft 365 increase. That advice expired when the increase took effect. A new input asks when the current EA term began. Terms that began earlier are now told to hold their pre-increase pricing to term end, and to add genuinely needed seats at anniversary true-ups. Terms that began on or after July 1 are told an early renewal gains nothing on price. The related tactic, alert, risk, question, and concession were all rewritten to match.',
