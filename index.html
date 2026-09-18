@@ -29,6 +29,8 @@
       --gcp-dim:      rgba(52,211,153,.1);
       --grid:         #FB923C;
       --grid-dim:     rgba(251,146,60,.1);
+      --capacity:     #38BDF8;
+      --capacity-dim: rgba(56,189,248,.1);
       --playbook:     #22D3EE;
       --playbook-dim: rgba(34,211,238,.1);
       --deals:        #A78BFA;
@@ -135,6 +137,7 @@
     .tool-card.microsoft::before { background:var(--microsoft); }
     .tool-card.gcp::before    { background:var(--gcp); }
     .tool-card.grid::before   { background:var(--grid); }
+    .tool-card.capacity::before { background:var(--capacity); }
     .tool-card.playbook::before { background:var(--playbook); }
     .tool-card.deals::before  { background:var(--deals); }
     .tool-card.baseline::before { background:var(--baseline); }
@@ -148,6 +151,7 @@
     .microsoft .tool-tag { color:var(--microsoft); background:var(--microsoft-dim); }
     .gcp .tool-tag      { color:var(--gcp);      background:var(--gcp-dim); }
     .grid .tool-tag     { color:var(--grid);     background:var(--grid-dim); }
+    .capacity .tool-tag { color:var(--capacity); background:var(--capacity-dim); }
     .playbook .tool-tag { color:var(--playbook); background:var(--playbook-dim); }
     .deals .tool-tag    { color:var(--deals);    background:var(--deals-dim); }
     .baseline .tool-tag { color:var(--baseline); background:var(--baseline-dim); }
@@ -168,6 +172,7 @@
     .microsoft .tool-link { color:var(--microsoft); }
     .gcp .tool-link      { color:var(--gcp); }
     .grid .tool-link     { color:var(--grid); }
+    .capacity .tool-link { color:var(--capacity); }
     .playbook .tool-link { color:var(--playbook); }
     .deals .tool-link    { color:var(--deals); }
     .baseline .tool-link { color:var(--baseline); }
@@ -359,6 +364,15 @@
         <p class="tool-desc">Scores U.S. power markets by grid constraint to surface sourcing leverage in cloud and data-center infrastructure deals. Identifies markets where capacity pressure creates negotiating advantage.</p>
         <div class="tool-footer">
           <span class="tool-link">Open tool <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card capacity" onclick="window.open('https://brianchernauskas.github.io/datacenter-capacity-map/','_blank')">
+        <span class="tool-tag">Infrastructure · Capacity</span>
+        <div class="tool-name">Data Center Capacity Map</div>
+        <p class="tool-desc">Global and regional view of hyperscaler and neocloud data-center footprint — regions live, availability zones, announced expansion, and where grid constraint turns into buyer leverage. Every figure carries its source and a confidence tier.</p>
+        <div class="tool-footer">
+          <span class="tool-link">Open map <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
 
