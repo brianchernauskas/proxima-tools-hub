@@ -215,6 +215,36 @@
 const ENTRIES = [
 
   {
+    date: '2026-09-21',
+    kind: 'industry',
+    cloud: 'salesforce',
+    title: 'Salesforce says outcome-based AI pricing is coming, but has no prices yet',
+    body: 'Following Dreamforce, Salesforce executives described three pricing approaches now running side by side: per-seat licences, Flex Credits, and outcome-based fees. Bill Patterson, EVP of CRM Applications, discussed pricing AI service agents by cases resolved at an investor webinar, and Deputy CFO Mike Spencer called the current mix an "anxiety-filled architecture". Consumption revenue is expected to become a material share in three to five years. No outcome-based prices or terms have been published. Existing contract vehicles remain annual commitments, the Agentic Enterprise License Agreement (AELA), and Salesforce Commit. This is reported by The Register from the investor webinar, not from a Salesforce pricing document.',
+    impact: 'Expect account teams to float outcome-based or bundled AI pricing at renewal before any rate card exists. Treat it as a proposal to be priced, not a published term. Ask for the per-outcome definition (what counts as a resolution), a cap, and a fallback to seat or Flex Credit pricing if the outcome metric is disputed. Tie any AI commitment to the Core/Advanced/Max bundle math already in the planner so the same Flex Credits are not paid for twice.',
+    link: { label: 'The Register', url: 'https://www.theregister.com/software/2026/09/21/salesforce-wants-to-charge-for-ai-outcomes-but-first-it-needs-to-figure-out-how/5297402' }
+  },
+
+  {
+    date: '2026-09-16',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'New Microsoft 365 Copilot Business licences default to pay-as-you-go usage billing from November 2',
+    body: 'Microsoft told CSP partners that from November 2, 2026, new Microsoft 365 Copilot Business purchases through CSP, standalone and in bundles, will include usage-based billing by default, with pay-as-you-go as the default billing configuration. It is aimed at eligible usage-based experiences such as Copilot Cowork, Work IQ APIs, and GitHub Copilot Harness, and the announcement refers to a preset monthly limit. Separately, Microsoft opened a "flex spend plan" test product in the CSP sandbox on September 1: a single agreement covering multiple eligible products, billed monthly rather than prepaid, with auto-renewal. Microsoft says it is a test construct, not a production offer. Both come from the Partner Center announcements page.',
+    impact: 'The seat licence is no longer the whole Copilot bill: an Azure subscription is set up with the licence and usage can accrue on top of it. This applies to new CSP purchases of Copilot Business, so it does not directly change an EA. It does show Microsoft moving Copilot toward metered billing. For any client adding Copilot Business through a partner, ask for the monthly limit, who can raise it, and how usage is reported before signing. Microsoft has not published the limit amount in this announcement.',
+    link: { label: 'Partner Center announcements', url: 'https://learn.microsoft.com/en-us/partner-center/announcements/2026-september' }
+  },
+
+  {
+    date: '2026-09-15',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'AWS Direct Connect adds flat-rate pricing with no data transfer out charges',
+    body: 'AWS introduced flat-rate pricing for 10 Gbps and 100 Gbps Dedicated Connections. A single fixed monthly price covers data transfer out within one of five geographic tiers, from same-metro to global. A port-pair option puts two connections on different devices or locations under one price, with the second at no extra cost. It is available at all Direct Connect locations in commercial Regions (China excluded), needs no upfront commitment, and customers can switch billing mode per connection at any time.',
+    impact: 'Hybrid and data-heavy clients whose Direct Connect bill is mostly per-GB transfer out can now compare that against a fixed fee. It is a pay-as-you-go option with no commitment, so it does not count toward an EDP by itself and is worth testing against actual monthly egress volume. Where a client is close to breaking even, the flat rate also removes a variable from EDP forecasting. Tier prices were not verified here; pull them from the pricing page before quoting anything.',
+    link: { label: 'AWS What\'s New', url: 'https://aws.amazon.com/about-aws/whats-new/2026/09/aws-direct-connect-announces-flat-rate-pricing/' }
+  },
+
+  {
     date: '2026-09-16',
     kind: 'update',
     cloud: 'salesforce',
