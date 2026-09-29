@@ -215,6 +215,93 @@
 const ENTRIES = [
 
   {
+    date: '2026-09-29',
+    kind: 'update',
+    cloud: 'azure',
+    title: 'Azure Planner — new tactic to price the Copilot usage layer alongside the seat',
+    body: 'When a client is planning Copilot adoption, the Azure Planner now adds a tactic explaining that Cowork, Code, Autopilot, long-running agents and frontier models are billed through Copilot Credits on top of the seat licence, following Microsoft\'s September 25 relaunch. It prompts the advisor to get the credit rate card in writing, ask about prepaid or MACC-drawn credits, and set spending policies from day one.',
+    impact: 'Keeps a Copilot seat deal from being signed without a price for the usage that now sits on top of it.'
+  },
+
+  {
+    date: '2026-09-29',
+    kind: 'update',
+    cloud: 'gcp',
+    title: 'GCP Planner — Gemini Enterprise renewal tactic for the Code Assist removal',
+    body: 'For clients with Vertex AI or AI expansion plans, the GCP Planner now adds a tactic noting that new and renewing Gemini Enterprise Standard and Plus subscriptions no longer include Gemini Code Assist as of September 17, 2026. It tells the advisor to inventory Code Assist use before renewal and negotiate it back into the Gemini Enterprise or EA price.',
+    impact: 'Surfaces a quiet entitlement loss before the renewal, not after developers lose access.'
+  },
+
+  {
+    date: '2026-09-29',
+    kind: 'update',
+    cloud: 'adobe',
+    title: 'Adobe Planner — Topaz Labs row updated to closed',
+    body: 'The Topaz Labs row in the Corporate &amp; Pricing Context block now shows the September 23, 2026 close, with Adobe\'s statement that Topaz stays standalone and its capabilities go to Firefly and Photoshop first. The implication now asks the advisor to get in writing whether Topaz features inside Creative Cloud draw on generative credits or a new add-on. The M&amp;A module note and the context verifiedOn date (September 29, 2026) were updated to match.',
+    impact: 'Removes the last pending acquisition flag from the planner and replaces it with a live renewal question.'
+  },
+
+  {
+    date: '2026-09-25',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Microsoft relaunches Copilot with seat licences plus usage billing for agents',
+    body: 'Microsoft announced a redesigned Copilot combining Home (Chat and Cowork with Office), Code (building apps and workflows in natural language) and Autopilot (a persistent cloud-hosted agent). The user subscription licence covers Copilot Chat and Copilot in Word, Excel, PowerPoint, Outlook and Teams, plus model selection. Cowork, Code, Autopilot, long-running agentic capabilities and frontier models run on usage-based billing through Copilot Credits. Microsoft also announced "FinOps for AI" admin controls: spending policies by API, approval workflows for credit requests, and model availability set by user group. No credit rates were published, and the announcement does not change the existing Microsoft 365 Copilot seat price. Home and Code roll out through the Frontier program in the coming weeks; Autopilot enters private preview at the end of the month.',
+    impact: 'The Copilot bill is now a seat plus a meter, and the meter is where the agent features live. In any Copilot negotiation, ask for the Copilot Credit rate card in writing, whether credits can be prepaid at a discount or drawn down against MACC, and who controls the spending limit. Do not let seat pricing be agreed while the usage layer is left to list. This follows the November 2 CSP default for Copilot Business, so the same pattern now runs across channels.',
+    link: { label: 'Official Microsoft Blog', url: 'https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/' }
+  },
+
+  {
+    date: '2026-09-23',
+    kind: 'industry',
+    cloud: 'adobe',
+    title: 'Adobe closes the Topaz Labs acquisition',
+    body: 'Adobe completed its acquisition of Topaz Labs, the AI image and video enhancement company, on September 23, 2026. The deal was announced June 25. Adobe says Topaz stays a standalone brand and its apps and models remain available on their own, while its capabilities come to Firefly and Photoshop first and more Creative Cloud workflows later. Topaz CEO Eric Yang joins Adobe\'s Digital Video and Audio team. Adobe did not say whether the integrated features will need a separate subscription or consume generative credits.',
+    impact: 'Clients who buy Topaz separately should keep that renewal short and separate from any ETLA or VIP deal. Ask Adobe in writing how Topaz features inside Creative Cloud will be metered before agreeing to credit allowances in a renewal. That question matters most in Adobe\'s current Q4 (September to November), when most enterprise renewals are negotiated.',
+    link: { label: 'Adobe Blog', url: 'https://blog.adobe.com/en/publish/2026/09/23/adobe-completes-acquisition-of-topaz-labs' }
+  },
+
+  {
+    date: '2026-09-23',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Microsoft CSP promotions on M365 E5, E7 and Copilot end September 30 as growth margins take over',
+    body: 'Microsoft confirmed that CSP license-based growth margins become available for transactions on October 1, 2026, with eligibility checks opening to partners on September 23. Microsoft 365 E5, Microsoft 365 E7 and Copilot promotions end on September 30 with the transition. Growth margins are paid to the partner, with eligible SKUs and minimum seat requirements in Partner Center. Separately, on September 24 Microsoft let eligible nonprofits stack CSP Copilot promotions of 15–40% on top of the existing 15% nonprofit offer through December 31, 2026.',
+    impact: 'For clients buying through CSP, a promotion that became a customer price cut on September 30 turns into a partner margin on October 1. Whether any of it reaches the customer is now a negotiation with the partner, not a Microsoft price. Ask CSP partners to disclose whether a deal qualifies for growth margins and how much of it is passed through. This does not change EA pricing.',
+    link: { label: 'Partner Center announcements', url: 'https://learn.microsoft.com/en-us/partner-center/announcements/2026-september' }
+  },
+
+  {
+    date: '2026-09-18',
+    kind: 'industry',
+    cloud: 'salesforce',
+    title: 'Analyst channel checks point to a harder Salesforce push toward the top edition',
+    body: 'BNP Paribas analyst Stefan Slowinski, reporting channel checks after Dreamforce and Investor Day, said roughly 5% of customers have moved to the $550 per user per month top tier and that the sales team plans to push upgrades more aggressively. One partner cited a financial-services customer whose renewal went from roughly $3–5 million to $14 million after a broader Agentforce deployment. Partners also reported continued confusion about pricing. This is reported by Benzinga from an analyst note, not a Salesforce document; the renewal example is a single, unverified anecdote.',
+    impact: 'Expect renewals in Salesforce\'s Q3 and Q4 (August to January) to lead with a move to Max. Price the upgrade against actual Flex Credit and Agentforce use, not bundled value, and keep a Core or Advanced quote on the table as the baseline. Treat the $14 million example as an illustration of the pitch, not a benchmark.',
+    link: { label: 'Benzinga via Yahoo Finance', url: 'https://finance.yahoo.com/markets/stocks/articles/agentforce-triggers-renewal-surge-sparking-102117886.html' }
+  },
+
+  {
+    date: '2026-09-17',
+    kind: 'industry',
+    cloud: 'gcp',
+    title: 'Gemini Enterprise Standard and Plus renewals no longer include Gemini Code Assist',
+    body: 'Google Cloud release notes say that new or renewing Gemini Enterprise Standard and Plus subscriptions bought online no longer include access to Gemini Code Assist features. Existing subscriptions keep access for their current term. Customers who want Code Assist are told to contact Google Cloud sales. Earlier in September, Google opened the Gemini Enterprise pay-as-you-go edition and overage controls to all projects on invoiced billing accounts.',
+    impact: 'An entitlement disappears at renewal without a price change, which is effectively a price increase for teams that used it. Check Code Assist usage before any Gemini Enterprise renewal and negotiate it back into the seat or EA price instead of accepting a new line at list.',
+    link: { label: 'Gemini Enterprise release notes', url: 'https://docs.cloud.google.com/gemini/enterprise/docs/release-notes' }
+  },
+
+  {
+    date: '2026-09-01',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'AWS Marketplace private offers can now auto-renew, including with a price change',
+    body: 'AWS Marketplace added auto-renewal for direct private offers with contract pricing. Sellers set the renewal terms when creating the offer: no price change, a fixed price change, or a price change within a defined range. Buyers choose auto-renewal when accepting and can change the setting later; either side can decline before the deadline. AWS sends both parties a comparison of current and upcoming terms before renewal, and buyers can map purchase orders to each renewal. The announcement does not address EDP commitment treatment.',
+    impact: 'Read the renewal terms on every private offer before accepting. A price change "within a defined range" is a pre-agreed uplift, so negotiate the range down or to zero at signing, when leverage is highest. Diarise the decline deadline for any Marketplace software that counts toward EDP drawdown, so a renewal is a choice and not a default.',
+    link: { label: 'AWS What\'s New', url: 'https://aws.amazon.com/about-aws/whats-new/2026/09/aws-marketplace-auto-renewals-for-private-offers/' }
+  },
+
+  {
     date: '2026-09-21',
     kind: 'industry',
     cloud: 'salesforce',
