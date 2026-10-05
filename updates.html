@@ -215,6 +215,35 @@
 const ENTRIES = [
 
   {
+    date: '2026-10-05',
+    kind: 'update',
+    cloud: 'aws',
+    title: 'AWS Planner — new alert for the October 7 Capacity Block repricing',
+    body: 'The AWS Planner now carries a second GPU alert, shown when a client has accelerated-compute or AI/ML workloads, noting that AWS reset EC2 Capacity Block rates again effective October 7, 2026, roughly 15% above the July levels, and that AWS says these prices are updated regularly with supply and demand. It tells the advisor to size commitments against current rates and to ask for a fixed rate card on named GPU families.',
+    impact: 'Stops the July figure from being quoted as the current baseline. Two increases in four months is now a pattern, so price protection is the ask, not a stretch goal.'
+  },
+
+  {
+    date: '2026-10-05',
+    kind: 'industry',
+    cloud: 'aws',
+    title: 'AWS resets EC2 Capacity Block rates again, effective October 7',
+    body: 'AWS\'s Capacity Blocks pricing page now lists new per-accelerator hourly rates effective October 7, 2026: P6-B300 $16.146, P6-B200 $14.208, P5en $7.895, P5e $6.866, P5 $5.970, P4de $2.546 and P4d $1.696 (US regions). Against the July 1 rates already in this log (P6-B300 $14.04, P5 $5.191) that is about 15% higher. The page does not state a percentage, says reservation prices are updated regularly based on supply and demand, and lists the next update as October 2026. On-Demand and Savings Plans rates are not part of this change.',
+    impact: 'The third GPU repricing this year, counting the two increases noted in July. Any commitment modelled on July rates is already stale. Ask for a fixed rate card on named GPU families for the term, and treat Capacity Blocks as a variable-price product when sizing a PPA, not a stable input. The percentage is our calculation from two AWS price points, not an AWS statement.',
+    link: { label: 'AWS Capacity Blocks pricing', url: 'https://aws.amazon.com/ec2/capacityblocks/pricing/' }
+  },
+
+  {
+    date: '2026-10-01',
+    kind: 'industry',
+    cloud: 'azure',
+    title: 'Microsoft adds a 5% uplift to monthly-billed annual CSP software subscriptions',
+    body: 'Microsoft announced on August 12 that from October 1, 2026 a 5% cost of capital uplift applies to CSP software subscriptions (SQL Server, Windows Server, Client Access Licenses, System Center) with annual-term commitments billed monthly. Existing subscriptions see it at renewal on or after October 1. Microsoft says annual billing and month-to-month subscriptions are unchanged, and describes the change as aligning pricing treatment across sales channels.',
+    impact: 'Paying monthly on a one-year CSP software term now costs 5% more than paying annually up front. For clients renewing server licences through a partner, ask for the annual-billing price and check whether the partner will absorb or pass through the uplift. This does not affect Azure consumption or EA pricing.',
+    link: { label: 'Partner Center announcements', url: 'https://learn.microsoft.com/en-us/partner-center/announcements/2026-august' }
+  },
+
+  {
     date: '2026-09-29',
     kind: 'update',
     cloud: 'azure',
