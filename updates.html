@@ -40,15 +40,6 @@
     a { color:inherit; text-decoration:none; }
 
     /* AUTH GATE */
-    #auth-gate { position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center; }
-    #auth-gate.hidden { display:none; }
-    .gate-box { width:100%;max-width:340px;padding:40px 32px;background:var(--card);border:1px solid var(--border);border-radius:14px;text-align:center; }
-    .gate-wordmark { font-family:Georgia,serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:6px; }
-    .gate-sub { font-size:.8rem;color:var(--text-3);margin-bottom:28px; }
-    .gate-input { width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;font-family:inherit;text-align:center;letter-spacing:.08em;margin-bottom:12px;outline:none; }
-    .gate-input:focus { border-color:var(--proxima); }
-    .gate-btn { width:100%;padding:10px;background:var(--proxima);color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer; }
-    .gate-error { margin-top:10px;font-size:.8rem;color:#f87171;min-height:18px; }
 
     /* HEADER */
     .site-header { border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px; }
@@ -143,20 +134,10 @@
 </head>
 <body>
 
-<div id="auth-gate">
-  <div class="gate-box">
-    <div class="gate-wordmark">Proxima</div>
-    <div class="gate-sub">Internal tools — authorized access only</div>
-    <input id="gate-input" class="gate-input" type="password" placeholder="Password" autocomplete="current-password">
-    <button class="gate-btn" onclick="checkPassword()">Enter</button>
-    <div class="gate-error" id="gate-error"></div>
-  </div>
-</div>
-
 <header class="site-header">
   <div class="wordmark">Proxima<span>.</span></div>
   <div class="header-right">
-    <a class="back-link" href="https://brianchernauskas.github.io/proxima-tools-hub/">← All tools</a>
+    <a class="back-link" href="https://tools.briansavesbillions.com/">← All tools</a>
     <a class="back-link" href="digest/">Monthly digest</a>
     <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
   </div>
@@ -367,7 +348,7 @@ const ENTRIES = [
     title: 'Salesforce Planner — top-tier discount bands recalibrated',
     body: 'A Proxima-observed enterprise outcome of 79–81% off list for a 12,000-user Sales and Service Cloud Unlimited estate was well above what the planner could show: its $10M+ ceiling was 62% even with every favorable factor. The base bands are now 33–45% for $2.5M–$5M ACV, 45–58% for $5M–$10M, and 55–68% for $10M+, and the $10M+ ceiling can reach 82% with competitive pressure, a three-year term, and fiscal Q4 timing. Bands under $2.5M are unchanged.',
     impact: 'Large Unlimited estates should anchor well above 60% off list. A strong $10M+ scenario now shows about 62–81%, which brackets the observed deal. The $2.5M–$10M bands are interpolated rather than directly observed, so log more deals in Deal Calibration to firm them up.',
-    link: { label: 'Open Salesforce Planner', url: 'https://brianchernauskas.github.io/salesforce-negotiation-planner/' }
+    link: { label: 'Open Salesforce Planner', url: 'https://tools.briansavesbillions.com/salesforce-negotiation-planner/' }
   },
 
   {
@@ -377,7 +358,7 @@ const ENTRIES = [
     title: 'Oracle Negotiation Planner — new tool',
     body: 'A seventh planner covers Oracle support renewals, new license and subscription purchases, ULA certification or renewal, OCI and multicloud commitments, Java SE subscriptions, and audit settlements. It scores leverage against Oracle\'s May 31 fiscal year and treats compliance exposure (audit status, VMware soft partitioning, unlicensed database options, and Java under the per-employee metric) as part of leverage. It models a support increase target, a discount off list for new purchases, recoverable support spend within Oracle\'s repricing rules, and Java list-price exposure by headcount band. An optional M&A module covers entity scope, ULA coverage, support contract consolidation, and divestiture transfer rights. A dated context table covers Q1 FY27 results, the March 2026 layoffs, the co-CEO structure, the end of free JDK 21 updates, the Database 19c support extension, and Support Rewards. Oracle deals can now be logged in Deal Calibration using the shared SaaS spend bands.',
     impact: 'Oracle negotiations are mostly about support, which compounds every year, and about compliance claims that Oracle settles through purchases. Free JDK 21 updates ended in September 2026, so Java exposure is the most time-sensitive item for most clients right now.',
-    link: { label: 'Open Oracle Planner', url: 'https://brianchernauskas.github.io/oracle-negotiation-planner/' }
+    link: { label: 'Open Oracle Planner', url: 'https://tools.briansavesbillions.com/oracle-negotiation-planner/' }
   },
 
   {
@@ -404,7 +385,7 @@ const ENTRIES = [
     title: 'Azure Planner — early-renewal advice corrected now that the July 2026 M365 increase is live',
     body: 'The planner had been advising EA customers to renew early or extend their term, to carry locked pricing past the July 1, 2026 Microsoft 365 increase. That advice expired when the increase took effect. A new input asks when the current EA term began. Terms that began earlier are now told to hold their pre-increase pricing to term end, and to add genuinely needed seats at anniversary true-ups. Terms that began on or after July 1 are told an early renewal gains nothing on price. The related tactic, alert, risk, question, and concession were all rewritten to match.',
     impact: 'Microsoft applies the new pricing at the next renewal after July 1, 2026, so an early renewal now brings the increase forward rather than avoiding it. Expect account teams to present early renewals or agreement "modernisation" as routine. For a pre-increase EA it is a price increase in disguise. Whether a term extension preserves current pricing is not confirmed, so get Microsoft\'s answer in writing before relying on one.',
-    link: { label: 'Open Azure Planner', url: 'https://brianchernauskas.github.io/azure-negotiation-planner/' }
+    link: { label: 'Open Azure Planner', url: 'https://tools.briansavesbillions.com/azure-negotiation-planner/' }
   },
 
   {
@@ -414,7 +395,7 @@ const ENTRIES = [
     title: 'New tool — Microsoft Negotiation Planner, covering the whole Microsoft estate',
     body: 'A sixth planner puts Azure, Microsoft 365, Copilot, Security, Dynamics 365, Power Platform, GitHub, Unified Support, and server licensing into one negotiation. It sets a target range for each product line and rates how hard Microsoft is pushing growth on it, so the advisor can see what to trade for what. It also sizes the July 2026 Microsoft 365 list increase for the seat count and suite, and compares EA, MCA-E, and CSP price protection. The Azure line reuses the Azure planner\'s ACD model and Proxima deal data. Every strategy flags the dated 2026 events that apply: Levels B–D removed, the end of the Copilot volume discount ladder (June 30), E7 availability, and seeded AI Builder credits ending November 1.',
     impact: 'The July 1, 2026 increase has now taken effect. For an EA whose term began earlier, it lands at renewal, so renewing early brings the increase forward rather than avoiding it. The new planner advises holding the term and truing up needed seats at locked pricing. Non-Azure ranges are planning ranges until Proxima deal data builds up for those lines.',
-    link: { label: 'Open Microsoft Planner', url: 'https://brianchernauskas.github.io/microsoft-negotiation-planner/' }
+    link: { label: 'Open Microsoft Planner', url: 'https://tools.briansavesbillions.com/microsoft-negotiation-planner/' }
   },
 
   {
@@ -424,7 +405,7 @@ const ENTRIES = [
     title: 'Salesforce Planner — added Core/Advanced/Max edition pricing and a migration-pitch alert',
     body: 'The planner\'s published list-price table now includes Core ($195), Advanced ($395), and Max ($550) per user/month alongside the existing Professional, Enterprise, and Unlimited rows, and every strategy now carries a note explaining what changed and why it matters at this renewal.',
     impact: 'Existing Enterprise and Unlimited customers keep their legacy pricing for now, but the new editions give account teams a ready "simplification" pitch to bring to any renewal from here forward. The alert tells the advisor to price that pitch against actual Agentforce, Slack, and analytics add-on spend before treating it as a saving.',
-    link: { label: 'Open Salesforce Planner', url: 'https://brianchernauskas.github.io/salesforce-negotiation-planner/' }
+    link: { label: 'Open Salesforce Planner', url: 'https://tools.briansavesbillions.com/salesforce-negotiation-planner/' }
   },
 
   {
@@ -444,7 +425,7 @@ const ENTRIES = [
     title: 'New tool — Adobe Negotiation Planner, with an optional M&A module',
     body: 'A fifth planner covers Adobe renewals across VIP, VIP 3-Year Commit, ETLA, and Experience Cloud agreements. It scores leverage against Adobe\'s fiscal calendar (year ends the Friday nearest November 30), models the renewal increase and discount off list, and sizes recoverable spend from idle licenses, over-specified Creative Cloud Pro seats, and unused Experience Cloud capacity. Switching on the M&A module adds transaction-specific guidance for acquisitions, mergers, being acquired, and divestitures — license transfer, assignment and change-of-control rights, consolidating parallel agreements, carve-out transition rights, and pre-close clean-team cautions. Adobe deals can now be logged in Deal Calibration.',
     impact: 'Adobe\'s 2026 moves change renewal math: Acrobat Standard for business pricing rose April 1, the June 1 VIP Marketplace pricelist raised most Creative Cloud and Acrobat SKUs and removed the Level 2 volume discount, Semrush closed April 28 and was folded into CX Enterprise, Topaz Labs is pending, and Anil Chakravarthy becomes CEO on December 1 — making Adobe\'s September–November Q4 the last quarter under current leadership. Each appears in the planner as a dated, sourced event.',
-    link: { label: 'Open Adobe Planner', url: 'https://brianchernauskas.github.io/adobe-negotiation-planner/' }
+    link: { label: 'Open Adobe Planner', url: 'https://tools.briansavesbillions.com/adobe-negotiation-planner/' }
   },
 
   {
@@ -481,7 +462,7 @@ const ENTRIES = [
     title: 'Azure Planner — added regional AI Foundry pricing alert',
     body: 'The planner now flags that Azure AI Foundry model deployments outside the default global region carry a price premium, whenever AI/ML use is selected. It appears as an informational alert alongside the existing Copilot and Azure OpenAI content.',
     impact: 'A client sizing a MACC or EA commitment with AI workloads pinned to the EU, APAC, or another compliance region now gets a prompt to size that spend off regional rates rather than the global rate card, before the commitment is set.',
-    link: { label: 'Open Azure Planner', url: 'https://brianchernauskas.github.io/azure-negotiation-planner/' }
+    link: { label: 'Open Azure Planner', url: 'https://tools.briansavesbillions.com/azure-negotiation-planner/' }
   },
 
   {
@@ -491,7 +472,7 @@ const ENTRIES = [
     title: 'GCP Planner — added Gemini Enterprise Flexible Savings Plans guidance',
     body: 'The planner now surfaces Gemini Enterprise Flexible Savings Plans (FSPs) as a tactic alongside the existing Vertex AI content, plus a matching diligence question. It appears wherever Vertex AI use or AI-expansion plans are already flagged, so it does not require a new input.',
     impact: 'Clients adopting Gemini Enterprise seats or agent workloads now get a concrete ask: route that spend through an FSP tied to the EA rather than paying list, and get spend caps and anomaly alerts confirmed before go-live.',
-    link: { label: 'Open GCP Planner', url: 'https://brianchernauskas.github.io/gcp-negotiation-planner/' }
+    link: { label: 'Open GCP Planner', url: 'https://tools.briansavesbillions.com/gcp-negotiation-planner/' }
   },
 
   {
@@ -531,7 +512,7 @@ const ENTRIES = [
     title: 'Salesforce Planner — swap rights added to the negotiation model',
     body: 'The planner now recommends negotiating swap rights: the contractual right to exchange licenses for a different product, edition, or user type mid-term without reopening the agreement. It appears as a ranked tactic, a must-have contract term, and a diligence question, with a companion tactic covering the three clauses that commonly render the right unusable.',
     impact: 'A Salesforce agreement locks which licenses you hold, not only how many. When the business shifts toward service, an edition proves over-specified, or a cloud fails to land, the original mix keeps billing and the replacement is bought on top. Swap rights are also the specific answer to wanting a multi-year term for the pricing without freezing the product mix for three years — so the tactic is ranked high when the mix is uncertain and the term is long, and suppressed entirely for a single-product one-year deal where it would be noise.',
-    link: { label: 'Open Salesforce Planner', url: 'https://brianchernauskas.github.io/salesforce-negotiation-planner/' }
+    link: { label: 'Open Salesforce Planner', url: 'https://tools.briansavesbillions.com/salesforce-negotiation-planner/' }
   },
 
 
@@ -632,7 +613,7 @@ const ENTRIES = [
     title: 'GCP Planner — fixed error that blocked strategy generation entirely',
     body: 'The GCP planner\'s discount stack section referenced a variable scoped to a different function, throwing a ReferenceError every time "Generate My Strategy" was clicked. No output was produced for any user. The value is now passed in as a parameter. The AWS and Azure planners used the same value inline within a single function and were never affected.',
     impact: 'If anyone reported the GCP tool appearing to do nothing when they submitted their inputs, this was the cause. Verified fixed against the live site — strategy generation now returns the full report. Worth re-running any GCP scenario that was attempted and abandoned.',
-    link: { label: 'Open GCP Planner', url: 'https://brianchernauskas.github.io/gcp-negotiation-planner/' }
+    link: { label: 'Open GCP Planner', url: 'https://tools.briansavesbillions.com/gcp-negotiation-planner/' }
   },
 
   {
@@ -669,7 +650,7 @@ const ENTRIES = [
     title: 'Salesforce Negotiation Planner launched',
     body: 'First non-cloud negotiation planner is live. Salesforce renewals move through uplift rather than consumption discounts, so the tool models three outputs instead of one: a target cap on renewal uplift, a dollar estimate of shelfware recoverable in the true-down window, and a discount-off-list band scaled by ACV. Leverage is scored against Salesforce\'s fiscal calendar, which ends January 31.',
     impact: 'Two mechanics drive most of the value. Renewal is typically the only moment a Salesforce agreement permits reducing seat counts, so unused licenses carried through it are carried for the full next term. And an uncapped uplift compounds across every year and every subsequent renewal, which makes the cap worth more than an equivalent one-time discount. The planner flags notice-window exposure as a hard alert, since a missed date converts a negotiation into an automatic renewal at Salesforce\'s number.',
-    link: { label: 'Open Salesforce Planner', url: 'https://brianchernauskas.github.io/salesforce-negotiation-planner/' }
+    link: { label: 'Open Salesforce Planner', url: 'https://tools.briansavesbillions.com/salesforce-negotiation-planner/' }
   },
 
   {
@@ -679,7 +660,7 @@ const ENTRIES = [
     title: 'AWS Planner — reseller channel discounts added for sub-$5M spend',
     body: 'The AWS Negotiation Planner now surfaces the reseller channel as a distinct discount layer for clients spending under $5M annually. APN channel partners hold their own volume agreements with AWS and can pass through margin as an incremental 5–15% discount that AWS will not offer on a direct deal of that size.',
     impact: 'Appears in three places: a ranked tactic, a green opportunity alert, and a line in the discount factors table. Above $5M the entry suppresses itself, since direct EDP terms generally outpace channel pricing at that level.',
-    link: { label: 'Open AWS Planner', url: 'https://brianchernauskas.github.io/aws-negotiation-planner/' }
+    link: { label: 'Open AWS Planner', url: 'https://tools.briansavesbillions.com/aws-negotiation-planner/' }
   },
 
   {
@@ -689,7 +670,7 @@ const ENTRIES = [
     title: 'Cloud Baseline Renewal Roadmap (SKU 1) launched',
     body: 'First engagement sizing planner is live. Takes client profile, contract status, and data readiness as inputs, then returns a recommended team composition by role (VP through Associate Consultant), an engagement duration range, and a projected savings range that shifts by provider.',
     impact: 'All sizing assumptions are editable on the companion Configure page and persist locally, so you can rerun a scenario against your own resourcing model rather than the defaults.',
-    link: { label: 'Open Baseline Planner', url: 'https://brianchernauskas.github.io/cloud-baseline-planner/' }
+    link: { label: 'Open Baseline Planner', url: 'https://tools.briansavesbillions.com/cloud-baseline-planner/' }
   },
 
   {
@@ -855,24 +836,6 @@ document.getElementById('last-updated-date').textContent = latest ? fmtDate(late
 render();
 
 /* AUTH */
-const HASH = 'e1af9770edb5a9358db28d25520d54b0e5aeb7bdaa6fed238cebea143d1560bb';
-async function sha256(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
-async function checkPassword() {
-  const hash = await sha256(document.getElementById('gate-input').value);
-  if (hash === HASH) {
-    localStorage.setItem('proxima-auth', HASH);
-    document.getElementById('auth-gate').classList.add('hidden');
-  } else {
-    document.getElementById('gate-error').textContent = 'Incorrect password.';
-    document.getElementById('gate-input').value = '';
-    document.getElementById('gate-input').focus();
-  }
-}
-document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
-if (localStorage.getItem('proxima-auth') === HASH) document.getElementById('auth-gate').classList.add('hidden');
 
 function toggleTheme() {
   const root = document.documentElement;
